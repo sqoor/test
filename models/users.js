@@ -1,64 +1,52 @@
 const mongoose = require("mongoose");
 
-// all code here is an illustration example of what you need to do
-// change the code corresponsdingly with what we want to do.
-// change all code here, we need different schema for the Users
+const ObjectId = mongoose.Schema.Types.ObjectId
 
-const usersSchema = new mongoose.Schema({
-  title: String,
-  language: String,
-  status: Boolean
+const UsersSchema = new mongoose.Schema({
+    name: String,
+    email: String,
+    phone: Number,
+    password: String,
+    posts: [ObjectId]
 });
 
-let Users = new mongoose.model("users", usersSchema);
+const Users = new mongoose.model("users", UsersSchema);
 
-let getUsers = cb => {
-  Users.find({}, (err, data) => {
-    if (err) {
-      cb(err);
-    } else {
-      cb(data);
-    }
-  });
+const getAll = async () => {
+  const users = await Users.find({})
+  return users;
 };
 
-let addUser = (repo, cb) => {
-  Users.create(repo, (err, data) => {
-    if (err) {
-      cb(err);
-    } else {
-      cb(data);
-    }
-  });
+const add = async (newUser) => {
+  const result = await Users.create(newUser);
+
+  return result;
 };
 
-let updateUser = (id, updatedStatus, cb) => {
-  Users.updateOne(
-    { _id: id },
-    { $set: { status: updatedStatus } },
-    (err, data) => {
-      if (err) {
-        cb(err);
-      } else {
-        cb(data);
-      }
-    }
-  );
-};
+const auth = async (userToCheck) => {
+  const result = await Users.find(userToCheck);
 
-let deleteUser = (id, cb) => {
-  Users.deleteOne({ _id: id }, (err, data) => {
-    if (err) {
-      cb(err);
-    } else {
-      cb(data);
-    }
-  });
+  return result;
+}
+
+//
+
+const update = async (_id, updatedUser) => {
+  const result = await Users.updateOne({ _id }, { $set: { status: updatedUser } });
+
+  return result 
+}
+
+const deleteOne = async (_id) => {
+  const result = await Users.deconsteOne({ _id });
+
+  return result;
 };
 
 module.exports = {
-  getUsers,
-  addUser,
-  updateUser,
-  deleteUser
+  getAll,
+  add,
+  update,
+  deleteOne,
+  auth
 };

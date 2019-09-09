@@ -1,26 +1,35 @@
-const users = require("../models/users");
+const Users = require("../models/users");
 const express = require("express");
 const router = express.Router();
 
-// Illustration Example:
-// NOTE: use router object instead of app object here
-/*
-// callback approach
-router.get("/", (req, res) => {
-  mongo.getRepos(result => {
-    res.send(result);
-  });
-});
 
-
-// async await approach
 router.get("/", async (req, res) => {
-  const result = await mongo.getRepos();
-  res.json(result);
+  const result = await Users.getAll();
+  
+  res.send(result);
 });
 
-*/
+router.post("/", async (req, res) => {
+  const newPost = req.body;
+  const result = await Users.add(newPost);
 
-// write you routes (server API) here
+  res.send(result);
+});
+
+router.put("/:id", async (req, res) => {
+  const id = req.params.id;
+  const updatedPost = req.body;
+  const result = await Users.update(id, updatedPost);
+  
+  res.send(result);
+});
+
+router.delete("/:id", async (req, res) => {
+  const id = req.params.id;
+  const result = await Users.deleteOne(id);
+
+  res.send(result);
+});
+
 
 module.exports = router;
