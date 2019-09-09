@@ -2,6 +2,7 @@ const Users = require("../models/users");
 const express = require("express");
 const router = express.Router();
 
+//get user by id for my profile page
 
 router.get("/", async (req, res) => {
   const result = await Users.getAll();

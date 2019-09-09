@@ -4,9 +4,17 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   const userToCheck = req.body;
-  const user = await Users.auth(userToCheck);
 
-  if(user.length) res.json(user);
+  let user = await Users.auth({email: userToCheck.email});
+  if(!user.length) {
+    res.json('user not existed');
+  }
+
+  user = await Users.auth(userToCheck);
+  if(user.length) {
+    res.json(user);
+    return;
+  }
 
   res.json('email or password do not match');
 });

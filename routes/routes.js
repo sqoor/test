@@ -7,5 +7,5 @@ module.exports = app => {
   app.use("/posts", posts);
   app.use("/login", login);
   app.use("/signup", signup);
-  // app.use("/users", users);
+  app.use("/users", users); // for test purposes
 };
