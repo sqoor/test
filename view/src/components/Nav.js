@@ -1,37 +1,34 @@
-import React, { Component } from 'react'
-import { Link } from "react-router-dom";
-import './Nav.css';
+import React, { Component } from "react";
+import { BrowserRouter as  Router, Route , Link } from "react-router-dom";
 
+import MyProfile from '../components/profile/MyProfile';
+import Register from '../components/register/Register';
+import Home from '../components/home/Home'
 
-export class Nav extends Component {
-    render() {
-        return (
-            <div className="d-flex justify-content-center">
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/">Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/users">Users</Link>
-                        </li>
-                        <li>
-                            <Link to="/contact">Contact</Link>
-                        </li>
-                        <li>
-                            <Link to="/login">Login</Link>
-                        </li>
-                        <li>
-                            <Link to="/signup">Sign Up</Link>
-                        </li>
-                        <li>
-                            <Link to="/admin/login">Admin Login</Link>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        )
-    }
+export class Navbar extends Component {
+  render() {
+    return (
+      <Router>
+
+      <div>
+          <nav class="navbar navbar-light bg-light">
+          <Link to="/" >Home</Link>
+          <Link to="/profile/:id" >My Profile</Link>
+          <Link to="/register" >sign out</Link>
+          </nav>
+
+          <Route path="/" exact component={Home} />
+            <Route path="/profile/:id" component={MyProfile} />
+            {/* <Route path="/post/:id" component={PostsPage} /> */}
+            <Route path="/register" component={Register} />
+            {/* <Route path="/contact" component={Contact} /> */}
+            {/* <Route component={NotFound} /> */}
+      </div>
+
+      </Router>
+
+    );
+  }
 }
 
-export default Nav
+export default Navbar;

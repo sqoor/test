@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import MyInfo from './MyInfo'
 import MyPostsList from './MyPostsList'
-import Navbar from '../home/Navbar'
 
 
 export class MyProfile extends Component {
@@ -18,6 +17,14 @@ export class MyProfile extends Component {
            },
            {
             title:'q2 for html',
+            code:'<html><html/>'
+           },
+           {
+            title:'q3 for html',
+            code:'<html><html/>'
+           },
+           {
+            title:'q4 for html',
             code:'<html><html/>'
            }
         ]
