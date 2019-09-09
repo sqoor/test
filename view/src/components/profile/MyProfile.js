@@ -35,7 +35,7 @@ export class MyProfile extends Component {
         return (
             <div>
                 <MyInfo myInfo={myInfo}/>
-                <MyPostsList myPost={myPost}/>
+                <MyPostsList myPost={myPost} myInfo={myInfo}/>
             </div>
         )
     }
