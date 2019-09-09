@@ -24,6 +24,7 @@ export class MyPostItem extends Component {
                         <b>Date:</b> 12/12/2019
                       </span>
                       <span className="userinfo_date">
+                        
                         <b>time:</b> 12:83 PM
                       </span>
                     </div>
