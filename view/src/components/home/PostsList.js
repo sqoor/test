@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 
-export class AdminPage extends Component {
+export class PostsList extends Component {
     render() {
-        console.log(this.props);
         return (
             <div>
-                Admin Page
+                PostsList Component
             </div>
         )
     }
 }
 
-export default AdminPage
+export default PostsList
