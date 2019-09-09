@@ -6,8 +6,22 @@ export class MyPostItem extends Component {
 
         return (
             <div>
-                title : {myPost.title}
-                code : {myPost.code}
+                {myPost.map(item=>{
+                    return( <div class="row">
+                     <div class="col-sm-6">
+                       <div class="card">
+                         <div class="card-body">
+                           <h5 class="card-title">{item.title}</h5>
+                           <p class="card-text">{item.code}</p>
+                           <a href="#" class="btn btn-primary">Edit</a>
+                           <a href="#" class="btn btn-primary">Delete</a>
+                         </div>
+                       </div>
+                     </div>
+                   </div>)
+                })}
+
+              
             </div>
         )
     }
