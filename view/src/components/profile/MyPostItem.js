@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-
+import myComments from './myComments'
 export class MyPostItem extends Component {
   render() {
-    const { myPost, myInfo } = this.props;
+    const { myPost, myInfo ,myComments} = this.props;
 
     return (
       <div>
-        <div className="container"></div>
+        {/* <div className="container"></div>
         <div className="row"></div>
-        <div className="col-md-10"></div>
+        <div className="col-md-10"></div> */}
         {myPost.map(item => {
           return (
             <div className="container">
@@ -24,7 +24,6 @@ export class MyPostItem extends Component {
                         <b>Date:</b> 12/12/2019
                       </span>
                       <span className="userinfo_date">
-                        
                         <b>time:</b> 12:83 PM
                       </span>
                     </div>
@@ -37,6 +36,9 @@ export class MyPostItem extends Component {
                       <textarea>the Answers</textarea>
                       <button className="btn btn-info">Answer</button>
                     </div>
+                    <div>
+                      <button type="button" class="btn btn-info"> Delete </button>
+                      </div>
                     <div className="commints">
                       <div className="commints_answers">10 Comments</div>
                     </div>
@@ -46,6 +48,7 @@ export class MyPostItem extends Component {
             </div>
           );
         })}
+        <myComments myComments={myComments}/>
       </div>
     );
   }

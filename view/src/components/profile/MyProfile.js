@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MyInfo from './MyInfo'
 import MyPostsList from './MyPostsList'
+import myComments from './myComments';
 
 
 export class MyProfile extends Component {
@@ -27,15 +28,26 @@ export class MyProfile extends Component {
             title:'q4 for html',
             code:'<html><html/>'
            }
+        ],
+        myComments:[
+            {
+               comment :'1  dfkjfhdskfdhfbd'
+            },
+            {
+                comment :'2    dfkjfhdskfdhfbd'
+             },
+             {
+                comment :'3    dfkjfhdskfdhfbd'
+             },
         ]
     }
       
     render() {
-        const {myInfo,myPost}=this.state
+        const {myInfo,myPost,myComments}=this.state
         return (
             <div>
                 <MyInfo myInfo={myInfo}/>
-                <MyPostsList myPost={myPost} myInfo={myInfo}/>
+                <MyPostsList myPost={myPost} myInfo={myInfo} myComments={myComments}/>
             </div>
         )
     }

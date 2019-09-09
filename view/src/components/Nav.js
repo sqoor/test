@@ -4,6 +4,7 @@ import { BrowserRouter as  Router, Route , Link } from "react-router-dom";
 import MyProfile from '../components/profile/MyProfile';
 import Register from '../components/register/Register';
 import Home from '../components/home/Home'
+import NotFound from '../components/NotFound'
 
 export class Navbar extends Component {
   render() {
@@ -38,11 +39,11 @@ export class Navbar extends Component {
             <ul class="navbar-nav ml-auto">
 
               <li class="nav-item active">
-          <Link to="/" class="nav-link" >Home <span class="sr-only">(current)</span></Link>
+              <Link to="/" class="nav-link" >Home <span class="sr-only">(current)</span></Link>
               </li>
 
               <li class="nav-item ">
-                <Link to="/profile/:id"  class="nav-link">My Profile</Link>
+                <Link to="/profile"  class="nav-link">My Profile</Link>
               </li>
 
               <li class="nav-item ">
@@ -72,14 +73,17 @@ export class Navbar extends Component {
             </ul>
           </div>
         </nav>
-      
-
-          <Route path="/" exact component={Home} />
+{/*       
+            <Route path="/" exact component={Home} />
             <Route path="/profile/:id" component={MyProfile} />
-            {/* <Route path="/post/:id" component={PostsPage} /> */}
+            <Route path="/post/:id" component={PostsPage} />
             <Route path="/register" component={Register} />
-            {/* <Route path="/contact" component={Contact} /> */}
-            {/* <Route component={NotFound} /> */}
+            <Route path="/contact" component={Contact} />
+            <Route component={NotFound} />
+
+             */}
+
+            
       </div>
 
       </Router>
