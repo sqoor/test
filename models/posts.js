@@ -1,63 +1,54 @@
 const mongoose = require("mongoose");
 
-// illustration example
-// delete all code below and rewrite as our application NEEDED;
+const ObjectId = mongoose.Types.ObjectId;
 
-const postsSchema = new mongoose.Schema({
+const PostsSchema = new mongoose.Schema({
   title: String,
-  language: String,
-  status: Boolean
+  text: String,
+  code: String,
+  userId: ObjectId
 });
 
-let Posts = new mongoose.model("posts", postsSchema);
+const Posts = new mongoose.model("posts", PostsSchema);
 
-let getAll = cb => {
-  Posts.find({}, (err, data) => {
-    if (err) {
-      cb(err);
-    } else {
-      cb(data);
-    }
-  });
+const getAll = async () => {
+  const posts = await Posts.find({});
+  return posts;
 };
 
-let add = (repo, cb) => {
-  Posts.create(repo, (err, data) => {
-    if (err) {
-      cb(err);
-    } else {
-      cb(data);
-    }
-  });
+const getOne = async (_id) => {
+  const post = await Posts.find({_id});
+  return post;
 };
 
-let update = (id, updatedStatus, cb) => {
-  Posts.updateOne(
-    { _id: id },
-    { $set: { status: updatedStatus } },
-    (err, data) => {
-      if (err) {
-        cb(err);
-      } else {
-        cb(data);
-      }
-    }
-  );
+const getByUserId = async (userId) => {
+  const posts = await Posts.find({userId});
+  return posts;
 };
 
-let deleteOne = (id, cb) => {
-  Posts.deleteOne({ _id: id }, (err, data) => {
-    if (err) {
-      cb(err);
-    } else {
-      cb(data);
-    }
-  });
+
+const add = async (newPost) => {
+  const result = await Posts.create(newPost);
+  return result;
+};
+
+const update = async (_id, updatedPost) => {
+  const result = await Posts.updateOne({ _id }, { $set: { status: updatedPost } });
+  
+  return result;
+};
+
+const deleteOne = async (_id) => {
+  const result = await Posts.deleteOne({ _id });
+
+  return result;
 };
 
 module.exports = {
   getAll,
   add,
   update,
-  deleteOne
+  deleteOne,
+  getOne,
+  getByUserId
 };

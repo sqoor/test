@@ -1,26 +1,20 @@
-const users = require("../models/users");
+const Users = require("../models/users");
 const express = require("express");
 const router = express.Router();
 
-// Illustration Example:
-// NOTE: use router object instead of app object here
-/*
-// callback approach
-router.get("/", (req, res) => {
-  mongo.getRepos(result => {
-    res.send(result);
-  });
+// TODO: make sure the user is not exist
+router.post("/", async (req, res) => {
+  const newUser = req.body;
+  const user = await Users.auth({ email: newUser.email});
+
+  if(user.length) {
+    res.json('this email already have an account');
+    return;
+  }
+
+  const addedUser = await Users.add(newUser);
+  res.send(addedUser);
 });
 
-
-// async await approach
-router.get("/", async (req, res) => {
-  const result = await mongo.getRepos();
-  res.json(result);
-});
-
-*/
-
-// write you routes (server API) here
 
 module.exports = router;
