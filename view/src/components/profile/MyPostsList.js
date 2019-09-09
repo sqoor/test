@@ -3,10 +3,10 @@ import MyPostItem from './MyPostItem'
 
 export class PostsList extends Component {
     render() {
-        const {myInfo,myPost}=this.props
+        const {myInfo,myPost,myComments}=this.props
         return (
             <div>
-                <MyPostItem myPost={myPost} myInfo={myInfo}/>
+                <MyPostItem myPost={myPost} myInfo={myInfo} myComments={myComments}/>
             </div>
         )
     }
