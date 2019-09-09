@@ -7,6 +7,7 @@ import NotFound from "./components/NotFound";
 import Register from "./components/register/Register";
 import MyProfile from "./components/profile/MyProfile";
 import PostsPage from "./components/posts/PostPage";
+import Nav from './components/Nav'
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
             <Route component={NotFound} />
           </Switch>
         </Router>
+        <Nav/>
       </div>
     );
   }
