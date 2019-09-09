@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class myComments extends Component {
   render() {
     const { myComments } = this.props;
-
+        
     return (
       <div>
           {myComments.map(item=>{
