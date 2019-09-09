@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-
-// this component should render the list of created posts by a certain user (it will be renderd on the profile(userPge)).
+import MyPostItem from './MyPostItem'
 
 export class PostsList extends Component {
     render() {
+        const {myInfo,myPost,myComments}=this.props
         return (
             <div>
-                
+                <MyPostItem myPost={myPost} myInfo={myInfo} myComments={myComments}/>
             </div>
         )
     }

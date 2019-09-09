@@ -1,0 +1,203 @@
+body {
+    background-color: #f4f4f4;
+  }
+  .btn-info {
+    background-color: #4f92ff;
+    border-color: #4f92ff;
+  }
+  .btn-info:hover {
+    color: #fff;
+    background-color: #4f92ff;
+    border-color: #4f92ff;
+  }
+  .navbar-light .navbar-nav .active > .nav-link,
+  .navbar-light .navbar-nav .nav-link.active,
+  .navbar-light .navbar-nav .nav-link.show,
+  .navbar-light .navbar-nav .show > .nav-link {
+    color: rgb(79, 146, 255);
+  }
+  .min_header {
+    position: relative;
+    min-height: 300px;
+    background-image: url("http://localhost:3000/images/header-cover.jpg");
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+  }
+  .min_header::after {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  .min_header p {
+    margin-right: auto;
+  }
+  
+  .post_item {
+    background: #fff;
+    padding: 10px 15px;
+    margin: 25px 0;
+    box-shadow: 0 0 3px 2px rgba(79, 146, 255, 0.31);
+  }
+  .User_info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .userinfo_date {
+    font-size: 12px;
+    color: #aaa;
+    margin: 0 10px;
+    display: inline-block;
+    margin: 0 10px;
+    margin-bottom: -5px;
+  }
+  .user_img img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .user_img {
+    padding: 2px;
+    border: 3px solid #4f92ff;
+    display: inline-block;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+  }
+  
+  .user_name {
+    font-size: 22px;
+    margin: 0 10px;
+  }
+  
+  .post textarea {
+    max-height: max-content;
+    max-width: 100%;
+    min-height: 200px;
+    min-width: 100%;
+    /* overflow-y: scroll; */
+    word-wrap: wrap;
+    background: transparent;
+    border: none;
+  }
+  .pos_anser {
+    background: #ddd;
+    padding:10px;
+    display: inline-block;
+    width: 100%
+  }
+  .pos_anser .anser_count {
+    padding: 8px;
+    background: #4f92ff;
+    color: #fff;
+    float: left;
+  }
+  .pos_anser button {
+    float: right;
+  }
+  .pos_anser_single{
+  
+    background: #ddd;
+    padding:10px;
+    display: inline-block;
+    width: 100%
+  } 
+  .pos_anser_single button {
+    float: right
+  }
+  .pos_anser_single textarea{
+    max-height: max-content;
+    max-width: 100%;
+    min-height: 200px;
+    min-width: 100%;  
+  }
+  
+  .commints .commints_answers{
+    /* background: #eee; */
+    border: 1px solid #4f92ff;
+    border-width: 1px 0 1px 0;
+    padding: 10px;
+    margin: 25px 0;
+    font-size: 25px;
+    font-weight: bold;
+  
+  
+  }
+  .add_Post_form{
+    padding: 15px;
+    background: #fff;
+    box-shadow: 0 0 3px 2px rgba(79, 146, 255, 0.31);
+    padding: 10px 15px;
+    margin: 25px 0;
+  }
+  .add_Post_form input{
+    margin: 10px 0
+  }
+  .add_Post_form  textarea {
+    max-height: max-content;
+    max-width: 100%;
+    min-height: 200px;
+    min-width: 100%; 
+  
+  }
+  .add_Post_form button{
+    display: block;
+    margin-left: auto;
+    margin-top: 10px;
+  }
+  
+  .logIn{
+    padding: 15px;
+    background: #fff;
+    box-shadow: 0 0 3px 2px rgba(79, 146, 255, 0.31);
+    padding: 10px 15px;
+    margin: 25px 0;
+  }
+  .logIn input{
+    margin: 10px 0
+  }
+  
+  .logIn button{
+   width: 100%
+  }
+  
+  .Sign_up{
+    padding: 15px;
+    background: #fff;
+    box-shadow: 0 0 3px 2px rgba(79, 146, 255, 0.31);
+    padding: 10px 15px;
+    margin: 25px 0;
+  }
+  .Sign_up input{
+    margin: 10px 0
+  }
+  
+  .Sign_up button{
+   width: 100%
+  }
+  .User_profile{
+    padding: 25px;
+    background: #fff;
+  }
+  .User_prof_img{
+    width: 200px;
+    height: 200px;
+    border:2px solid #4f92ff;
+    border-radius: 50%;
+    display: inline-block
+  }
+  .User_prof_img img{
+    width: 100%;
+    height: 100;
+  }
+  .My_posts{
+    margin: 25px 0
+  }
