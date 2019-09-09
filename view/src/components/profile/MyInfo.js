@@ -2,9 +2,12 @@ import React, { Component } from 'react'
 
 export class MyInfo extends Component {
     render() {
+        const {myInfo}=this.props
         return (
             <div>
-                MyInfo Component
+                Name: {myInfo.name}
+                Email : {myInfo.email}
+                Phone: {myInfo.phoneNo}
             </div>
         )
     }
