@@ -35,16 +35,14 @@ const auth = async (userToCheck) => {
   return result;
 }
 
-//
-
 const update = async (_id, updatedUser) => {
-  const result = await Users.updateOne({ _id }, { $set: { status: updatedUser } });
+  const result = await Users.updateOne({ _id }, { $set: updatedUser });
 
   return result 
 }
 
 const deleteOne = async (_id) => {
-  const result = await Users.deconsteOne({ _id });
+  const result = await Users.deleteOne({ _id });
 
   return result;
 };
