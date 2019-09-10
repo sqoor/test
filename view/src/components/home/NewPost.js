@@ -7,25 +7,30 @@ export class NewPost extends Component {
 
         const text = this.text.value;
         const title = this.title.value;
-        console.log(title, text);
+        const code = this.code.value
+        console.log(title, text, code);
 
-        this.props.addPost({title, text})
+        this.props.addPost({title, text, code})
     }
-
     render() {
         return (
-                <div className="add_Post_form">
-                    <form onSubmit={this.submit}>
-                        <h4 className="text-center">Create New Post</h4>
-                        <input ref={elem => this.title = elem} type="text" className="form-control" placeholder="PostName" />
-                        <textarea
-                            ref={elem => this.text = elem}
-                            className="form-control"
-                            placeholder="Enter Your Code Here"
-                        ></textarea>
-                        <button className="btn btn-info">Publish Your Question</button>
-                    </form>
-                </div>
+            <div className="add_Post_form">
+                <form onSubmit={this.submit}>
+                    <h4 className="text-center">Create New Post</h4>
+                    <input ref={elem => this.title = elem} type="text" className="form-control" placeholder="PostName" />
+                    <textarea
+                        ref={elem => this.text = elem}
+                        className="form-control"
+                        placeholder="Enter Your Question Here"
+                    ></textarea>
+                    <textarea
+                        ref={elem => this.code = elem}
+                        className="form-control"
+                        placeholder="Enter Your Code Here"
+                    ></textarea>
+                    <button className="btn btn-info">Publish Your Question</button>
+                </form>
+            </div>
         )
     }
 }
