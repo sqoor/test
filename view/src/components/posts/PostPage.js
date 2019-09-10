@@ -6,6 +6,7 @@ export class PostsPage extends Component {
     state={
         post:[]
     }
+    
 
     getPost = (id) => {
         axios
