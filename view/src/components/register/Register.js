@@ -1,133 +1,169 @@
 import React, { Component } from "react";
-import Login from "./Login";
+import Axios from "axios";
 
 export class Register extends Component {
-  loginBtn = () => { 
+  loginBtn = () => {
     document.getElementById("login").style.display = "block";
     document.getElementById("signup").style.display = "none";
-
   };
-  signupBtn = () => { 
+
+  signupBtn = () => {
     document.getElementById("login").style.display = "none"
     document.getElementById("signup").style.display = "block"
   };
+
+  loginHandler = (e) => {
+    e.preventDefault()
+
+    const email = this.loginEmail.value
+    const password = this.loginPass.value
+
+    console.log('email', email)
+    console.log('password', password);
+
+    Axios
+      .post('/login', { email, password })
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  signupHandler = (e) => {
+    e.preventDefault()
+
+    const newUser = {
+      name: this.name.value,
+      email: this.email.value,
+      phone: this.phone.value,
+      password: this.password.value,
+      image: this.image.value
+    }
+
+    Axios.post('/signup', newUser)
+      .then(res => {
+        console.log('RES.DATA', res.data);
+      })
+      .catch(err => console.log(err))
+  }
+
   render() {
     return (
-      <div class="login-10">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-xl-4 col-lg-5 col-md-12 col-pad-0 bg-color-10">
-              <div class="form-section ">
-                <div class="logo">
+      <div className="login-10">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-xl-4 col-lg-5 col-md-12 col-pad-0 bg-color-10">
+              <div className="form-section ">
+                <div className="logo">
                   <h3>Welcome To Code Talkerz</h3>
                 </div>
-                <div class="btn-section">
-                  <a href="#" class="link-btn active" onClick={this.loginBtn}>
+                <div className="btn-section">
+                  <button className="link-btn active" onClick={this.loginBtn}>
                     Login
-                  </a>
-                  <a href="#" class="link-btn" onClick={this.signupBtn}>
-                  signup
-                  </a>
+                  </button>
+                  <button className="link-btn" onClick={this.signupBtn}>
+                    signup
+                  </button>
                 </div>
-                <div class="login-inner-form" id="login">
-                  <form action="" method="GET">
-                    <div class="form-group form-box">
+                <div className="login-inner-form" id="login">
+                  <form onSubmit={this.loginHandler} action="" method="GET">
+                    <div className="form-group form-box">
                       <input
+                        ref={elem => this.loginEmail = elem}
                         type="email"
                         name="email"
                         className="animated bounceInLeft input-text"
                         placeholder="Email Address"
                       />
                     </div>
-                    <div class="form-group form-box">
+                    <div className="form-group form-box">
                       <input
+                        ref={elem => this.loginPass = elem}
                         type="password"
                         name="Password"
                         className="animated bounceInLeft  input-text"
                         placeholder="Password"
                       />
-                     
+
                     </div>
-                    <div class="checkbox clearfix">
-                    
+                    <div className="checkbox clearfix">
+
                     </div>
-                    <div class="form-group mb-0">
-                      <button type="submit" class="btn-md btn-theme btn-block">
+                    <div className="form-group mb-0">
+                      <button type="submit" className="btn-md btn-theme btn-block">
                         Login
                       </button>
                     </div>
                   </form>
-                  <div class="extra-login">
+                  <div className="extra-login">
                     <span>Code Talkerz</span>
                   </div>
                 </div>
-                <div class="login-inner-form " style={{display:"none"}} id="signup">
-                  <form action="" method="GET">
-                  <div class="form-group form-box">
+                <div className="login-inner-form " style={{ display: "none" }} id="signup">
+                  <form onSubmit={this.signupHandler} action="" method="GET">
+                    <div className="form-group form-box">
                       <input
+                        ref={elem => this.name = elem}
                         type="text"
-                        name="userName"
+                        name="name"
                         className="animated bounceInLeft  input-text"
                         placeholder="User Name"
                       />
-                      
                     </div>
-
-
-                    <div class="form-group form-box">
+                    <div className="form-group form-box">
                       <input
+                        ref={elem => this.email = elem}
                         type="email"
                         name="email"
                         className="animated bounceInLeft input-text"
                         placeholder="Email Address"
                       />
-                      
                     </div>
-                    <div class="form-group form-box">
+                    <div className="form-group form-box">
                       <input
+                        ref={elem => this.phone = elem}
                         type="phone"
                         name="numper"
                         className="animated bounceInLeft  input-text"
                         placeholder="phone Numper"
                       />
-                      
                     </div>
-                    <div class="form-group form-box">
+                    <div className="form-group form-box">
                       <input
+                        ref={elem => this.password = elem}
                         type="password"
                         name="Password"
                         className="animated bounceInLeft  input-text"
                         placeholder="Password"
                       />
-                      
                     </div>
-                    <div class="form-group form-box">
+                    <div className="form-group form-box">
                       <input
+                        ref={elem => this.image = elem}
                         type="text"
                         name="imgUrl"
                         className="animated bounceInLeft  input-text"
                         placeholder="Enter Img URL"
                       />
-                      
                     </div>
-                    
-                    <div class="checkbox clearfix">
-                   
+                    <div className="checkbox clearfix">
                     </div>
-                    <div class="form-group mb-0">
-                      <button type="submit" class="btn-md btn-theme btn-block">
+                    <div className="form-group mb-0">
+                      <button type="submit" className="btn-md btn-theme btn-block">
                         sign Up
                       </button>
                     </div>
                   </form>
-                  <div class="extra-login">
-                  <span>Code Talkerz</span>
+                  <div className="extra-login">
+                    <span>Code Talkerz</span>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-xl-8 col-lg-7 col-md-12 col-pad-0 bg-img none-992">
-              <div class="info">
+            <div className="col-xl-8 col-lg-7 col-md-12 col-pad-0 bg-img none-992">
+              <div className="info">
                 <h1>Welcome to Code Talkerz</h1>
                 <p>
                   Lorem Ipsum is simply dummy text of the printing and
