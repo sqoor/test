@@ -7,10 +7,16 @@ const UsersSchema = new mongoose.Schema({
     email: String,
     phone: Number,
     password: String,
+    image: String,
     posts: [ObjectId]
 });
 
 const Users = new mongoose.model("users", UsersSchema);
+
+const getOne = async (_id) => {
+  const user = await Users.find({_id})
+  return user;
+};
 
 const getAll = async () => {
   const users = await Users.find({})
@@ -48,5 +54,6 @@ module.exports = {
   add,
   update,
   deleteOne,
-  auth
+  auth,
+  getOne
 };
