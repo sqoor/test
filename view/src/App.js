@@ -7,12 +7,14 @@ import NotFound from "./components/NotFound";
 import Register from "./components/register/Register";
 import MyProfile from "./components/profile/MyProfile";
 import PostsPage from "./components/posts/PostPage";
+import NavBar from "./components/NavBar";
 
 class App extends Component {
   render() {
     return (
       <div>
         <Router>
+          <NavBar />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/profile/:id" component={MyProfile} />
