@@ -2,12 +2,15 @@ const Users = require("../models/users");
 const express = require("express");
 const router = express.Router();
 
+// POST: http://localhost:9000/login
+// body: {email: '', password: ''}
 router.post("/", async (req, res) => {
   const userToCheck = req.body;
 
   let user = await Users.auth({email: userToCheck.email});
   if(!user.length) {
     res.json('user not existed');
+    return;
   }
 
   user = await Users.auth(userToCheck);
