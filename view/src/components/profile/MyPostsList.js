@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import MyPostItem from './MyPostItem'
+import React, { Component } from "react";
+import MyPostItem from "./MyPostItem";
 
 export class PostsList extends Component {
-    render() {
-        const {myInfo,myPost,myComments}=this.props
-        return (
-            <div>
-                <MyPostItem myPost={myPost} myInfo={myInfo} myComments={myComments}/>
-            </div>
-        )
-    }
+  render() {
+    const { myPosts, deletePost } = this.props;
+    return (
+      <div>
+        {myPosts.map(post => <MyPostItem key={post._id} {...post} deletePost={deletePost} />)}
+      </div>
+    );
+  }
 }
 
-export default PostsList
+export default PostsList;
