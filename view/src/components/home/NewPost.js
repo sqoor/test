@@ -20,7 +20,7 @@ export class NewPost extends Component {
                     <input ref={elem => this.title = elem} type="text" className="form-control" placeholder="PostName" />
                     <textarea
                         ref={elem => this.text = elem}
-                        className="form-control"
+                        className="form-control question_textarea "
                         placeholder="Enter Your Question Here"
                     ></textarea>
                     <textarea
