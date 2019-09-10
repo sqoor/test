@@ -1,56 +1,67 @@
-import React, { Component } from 'react';
-import MyInfo from './MyInfo'
-import MyPostsList from './MyPostsList'
-import myComments from './myComments';
-
+import React, { Component } from "react";
+import MyInfo from "./MyInfo";
+import MyPostsList from "./MyPostsList";
+import NewPost from '../home/NewPost'
+import axios from "axios";
 
 export class MyProfile extends Component {
-    state={
-        myInfo:{
-            name:'Asma',
-            email:'Asmaa.ALfauri@gmail.com',
-            phoneNo: '0777522506'
-        },
-        myPost:[
-          {
-            title:'q1 for html',
-            code:'<html><html/>'
-           },
-           {
-            title:'q2 for html',
-            code:'<html><html/>'
-           },
-           {
-            title:'q3 for html',
-            code:'<html><html/>'
-           },
-           {
-            title:'q4 for html',
-            code:'<html><html/>'
-           }
-        ],
-        myComments:[
-            {
-               comment :'1  dfkjfhdskfdhfbd'
-            },
-            {
-                comment :'2    dfkjfhdskfdhfbd'
-             },
-             {
-                comment :'3    dfkjfhdskfdhfbd'
-             },
-        ]
-    }
-      
-    render() {
-        const {myInfo,myPost,myComments}=this.state
-        return (
-            <div>
-                <MyInfo myInfo={myInfo}/>
-                <MyPostsList myPost={myPost} myInfo={myInfo} myComments={myComments}/>
-            </div>
-        )
-    }
+  state = {
+    myInfo: {
+      posts: [],
+      _id: "5d776bf90b190a2100efcc4d",
+      name: "Asma",
+      email: "asma@gmail.com",
+      phone: 123456789,
+      password: "1234",
+      image: "url",
+      __v: 0
+    },
+    myPosts: []
+  };
+  componentDidMount() {
+    // myInfo = this.props.histoy.state
+
+    // console.log("REACT:get");
+    axios
+      .get(`http://localhost:9000/posts/user/${this.state.myInfo._id}`)
+      .then(response => {
+        this.setState({ myPosts: response.data });
+        // console.log("React:get response.data", response.data);
+      })
+      .catch(error => {
+        console.log("Error", error);
+      });
+  }
+
+  deletePost = id => {
+    axios
+      .delete(`http://localhost:9000/posts/${id}`)
+      .then(response => {
+        const result = response.data;
+
+        if (result.n && result.ok && result.deletedCount) {
+          this.setState({
+            myPosts: this.state.myPosts.filter(post => post._id !== id)
+          });
+        }
+      })
+      .catch(error => {
+        console.log("Error", error);
+      });
+  };
+
+  render() {
+    const { myInfo, myPosts } = this.state;
+    const { deletePost } = this;
+
+    return (
+      <div>
+        <MyInfo myInfo={myInfo} />
+        <NewPost/>
+        <MyPostsList myPosts={myPosts} deletePost={deletePost} />
+      </div>
+    );
+  }
 }
 
-export default MyProfile
+export default MyProfile;

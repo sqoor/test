@@ -33,7 +33,7 @@ const add = async (newPost) => {
 };
 
 const update = async (_id, updatedPost) => {
-  const result = await Posts.updateOne({ _id }, { $set: { status: updatedPost } });
+  const result = await Posts.updateOne({ _id }, { $set: { updatedPost } });
   
   return result;
 };
