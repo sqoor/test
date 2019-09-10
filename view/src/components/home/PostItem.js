@@ -4,7 +4,7 @@ export class Post extends Component {
 
     render() {
 
-      const { posts, text, title } = this.props
+      const { posts } = this.props
       
         return (
           <div>
@@ -24,10 +24,10 @@ export class Post extends Component {
                     </span>
                   </div>
                   <div className="post">
-                    <h4>{title}</h4>
+                    <h4>{post.title}</h4>
                     <textarea
                       disabled="true"
-                      value={text}
+                      value={post.text}
                     >
                     </textarea>
                   </div>
