@@ -3,8 +3,15 @@ import NewPost from './NewPost';
 import Post from './PostItem';
 
 export class Home extends Component {
+    state = {
+        posts: []
+    }
     // axios.post('url', bodyObj);
 
+    addPost = newPost => {
+        console.log(newPost)
+    }
+    
     render() {
         return (
             <div>
@@ -12,21 +19,19 @@ export class Home extends Component {
                     <div className="row">
                         <div className="col-md-10">
                             <NewPost 
-                                labelChange={this.labelChange} 
-                                textChange={this.textChange}
-                                handleSubmit={this.handleSubmit}
+                                addPost = {this.addPost}
                             />
-                            {/* {posts.map( post => { 
+                            {/* {this.posts.map( post => { 
                                 return(
                                     <Post
                                         post = {post}
-                                        key={post._id}
-                                        title={title} 
-                                        text={text}
+                                        key = {post._id}
+                                        title = {this.title} 
+                                        text = {this.text}
                                     />
                                 ) 
                             })} */}
-                            <Post />
+                            <Post posts={this.state.posts} text={this.text} title={this.title}/>
                         </div>
                     </div>
                 </div>
