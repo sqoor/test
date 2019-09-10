@@ -12,6 +12,7 @@ router.get("/:postId", async (req, res) => {
       const comment = comments[i];
       const user = (await Users.getOne(comment.userId))[0];
       // retiver the user information with comment
+      
       console.log('U:',user)
       console.log('C:',comment);
 
