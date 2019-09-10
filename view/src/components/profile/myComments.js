@@ -6,6 +6,7 @@ export default class myComments extends Component {
         
     return (
       <div>
+        
           {/* {myComments.map(item=>{
               return(
                 <div className="card w-75">
