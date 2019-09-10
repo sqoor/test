@@ -13,6 +13,11 @@ const UsersSchema = new mongoose.Schema({
 
 const Users = new mongoose.model("users", UsersSchema);
 
+const getOne = async (_id) => {
+  const user = await Users.find({_id})
+  return user;
+};
+
 const getAll = async () => {
   const users = await Users.find({})
   return users;
@@ -49,5 +54,6 @@ module.exports = {
   add,
   update,
   deleteOne,
-  auth
+  auth,
+  getOne
 };
