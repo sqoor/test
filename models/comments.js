@@ -5,7 +5,11 @@ const ObjectId = mongoose.Types.ObjectId;
 const CommentsSchema = new mongoose.Schema({
   postId: ObjectId,
   userId: ObjectId,
-  text: String
+  text: String,
+  user: {
+    name: String,
+    image: String,
+  }
 });
 
 const Comments = new mongoose.model("comments", CommentsSchema);
