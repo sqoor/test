@@ -1,8 +1,25 @@
 import React, { Component } from "react";
+// import mongoose from 'mongoose';
 
 export class MyPostItem extends Component {
   render() {
     const { _id, image, title, text, code, deletePost } = this.props;
+
+//
+
+// const isoDate = mongoose.Types.ObjectId(_id).getTimestamp()
+// const date = new Date(isoDate);
+// console.log (date)
+
+const day = new Date ().getDate()
+const month= new Date().getMonth()
+const year= new Date().getFullYear()
+const hour=new Date().getHours()
+const minutes=new Date().getMinutes()
+
+
+//
+
 
     return (
       <div>
@@ -16,20 +33,20 @@ export class MyPostItem extends Component {
                   </div>
                   <div className="user_name">Me</div>
                   <span className="userinfo_date">
-                    <b>Date:</b> 12/12/2019
+                    <b>Date:</b> {`${day}/${month}/${year}`}
                   </span>
                   <span className="userinfo_date">
-                    <b>time:</b> 12:83 PM
+                    <b>time:</b> {`${hour}:${minutes}`}
                   </span>
                 </div>
                 <div className="post">
                   <h4>{title}</h4>
                   <h6>{text}</h6>
                   <br />
-                  <textarea>{code}</textarea>
+                  <pre>{code}</pre>
                 </div>
                 <div className="pos_anser_single">
-                  <textarea>the Answers</textarea>
+                  <p>the Answers</p>
                   <button className="btn btn-info">Answer</button>
                 </div>
                 <div>

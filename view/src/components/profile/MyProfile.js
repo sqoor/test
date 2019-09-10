@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MyInfo from "./MyInfo";
 import MyPostsList from "./MyPostsList";
+import NewPost from '../home/NewPost'
 import axios from "axios";
 
 export class MyProfile extends Component {
@@ -56,6 +57,7 @@ export class MyProfile extends Component {
     return (
       <div>
         <MyInfo myInfo={myInfo} />
+        <NewPost/>
         <MyPostsList myPosts={myPosts} deletePost={deletePost} />
       </div>
     );
