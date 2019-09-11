@@ -6,7 +6,9 @@ export class PostsList extends Component {
     const { myPosts, deletePost } = this.props;
     return (
       <div>
-        {myPosts.map(post => <MyPostItem key={post._id} {...post} deletePost={deletePost} />)}
+        {myPosts.map(post => (
+          <MyPostItem key={post._id} {...post} deletePost={deletePost} />
+        ))}
       </div>
     );
   }
