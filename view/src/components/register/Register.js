@@ -18,17 +18,45 @@ export class Register extends Component {
     const email = this.loginEmail.value
     const password = this.loginPass.value
 
-    console.log('email', email)
-    console.log('password', password);
+    // console.log('email', email)
+    // console.log('password', password);
 
     Axios
       .post('/login', { email, password })
       .then(res => {
-        console.log(res.data)
+        console.log('login', res.data);
+        this.existCases(res.data);
       })
       .catch(err => {
         console.log(err)
       })
+  }
+
+  existCases = (userCase) => {
+    if (userCase === 'user not existed')
+      alert('user not existed');
+    else if (userCase === 'email or password do not match')
+      alert('email or password do not match');
+
+    else if (Array.isArray(userCase) && userCase.length) {
+      console.log(userCase);
+      // set localstorage  // DONE 
+      // redirect to home page
+      // check the browser
+      // set localstorage as object // JSON.stringify
+      // get localstorage as object // JSON.parse
+      // JSON.parse(localStorage.user)
+
+      const user = userCase[0];
+      console.log('user', user);
+      localStorage.setItem('user', JSON.stringify(user));
+
+      this.props.history.push({
+        pathname: '/',
+        state: user
+      });
+    }
+
   }
 
   signupHandler = (e) => {
@@ -42,11 +70,30 @@ export class Register extends Component {
       image: this.image.value
     }
 
+    if (!(newUser.email && newUser.phone && newUser.password))
+      return alert('empty fields');
+
     Axios.post('/signup', newUser)
       .then(res => {
-        console.log('RES.DATA', res.data);
+        this.signUpCases(res.data);
       })
       .catch(err => console.log(err))
+  }
+
+  signUpCases(userCase) {
+    console.log(userCase);
+    if (userCase === 'this email already have an account')
+      return alert('this email already have an account');
+
+    else if (typeof userCase === "object") {
+      const user = userCase
+      localStorage.setItem('user', JSON.stringify(user));
+
+      this.props.history.push({
+        pathname: '/',
+        state: user
+      });
+    }
   }
 
   render() {
