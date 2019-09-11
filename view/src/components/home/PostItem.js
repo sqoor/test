@@ -38,7 +38,7 @@ export class Post extends Component {
             <div className="anser_count"> 30 Comment </div>
             <Link
               className="text-light"
-              to={{ pathname: `post/${_id}`, state: this.props.post }}
+              to={{ pathname: `/post/${_id}`, state: this.props.post }}
             >
               <button className="btn btn-info">Answer</button>
             </Link>

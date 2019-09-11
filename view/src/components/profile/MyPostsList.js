@@ -7,7 +7,7 @@ export class PostsList extends Component {
     return (
       <div>
         {myPosts.map(post => (
-          <MyPostItem key={post._id} {...post} deletePost={deletePost} />
+          <MyPostItem key={post._id} post={post} deletePost={deletePost} />
         ))}
       </div>
     );
