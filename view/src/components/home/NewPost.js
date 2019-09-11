@@ -13,6 +13,7 @@ export class NewPost extends Component {
             title,
             text,
             code,
+            userId: loggedUser._id, 
             user: {
                 name: loggedUser.name,
                 image: loggedUser.image
