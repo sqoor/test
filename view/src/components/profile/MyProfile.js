@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import MyInfo from "./MyInfo";
 import MyPostsList from "./MyPostsList";
-
-import NewPost from "../home/NewPost";
 import axios from "axios";
+
+// import MyInfo from "./MyInfo";
+// import NewPost from "../home/NewPost";
 
 export class MyProfile extends Component {
   state = {
@@ -11,15 +11,14 @@ export class MyProfile extends Component {
     myPosts: []
   };
   componentDidMount() {
-    this.setState({
-      myInfo: JSON.parse(localStorage.user) 
-    });
+    const loggedUser = JSON.parse(localStorage.user)
+    
+    this.setState({ myInfo: loggedUser });
 
-
-    axios.get(`/posts/user/${this.state.myInfo._id}`)
+    axios
+      .get(`/posts/user/${loggedUser._id}`)
       .then(response => {
         this.setState({ myPosts: response.data });
-        console.log("React:get response.data", response.data);
       })
       .catch(error => {
         console.log("Error", error);
@@ -56,8 +55,8 @@ export class MyProfile extends Component {
               <div
                 className="User_profile text-center "
                 style={{
-                  marginTop: "-50px",
-                  marginTop: " -125px",
+                  // marginTop: "-50px",
+                  marginTop: "-125px",
                   background: "none",
                   position: "relative",
                   zIndex: "999"
@@ -69,9 +68,9 @@ export class MyProfile extends Component {
                     background: "#fff"
                   }}
                 >
-                  <img src={myInfo.image} />
+                  <img src={myInfo.image} alt={myInfo.name} />
                 </div>
-                <h2 class="UserName">{myInfo.name}</h2>
+                <h2 className="UserName">{myInfo.name}</h2>
                 <div className="My_posts">
                   <div className="pos_anser">
                     <span className="float-left">
@@ -82,8 +81,6 @@ export class MyProfile extends Component {
                   </div>
                   {/* <NewPost /> */}
                   {/* <div className="pos_anser">My Posts</div> */}
-                  {/* ..........postitem.......... */}
-                  <div>{/* <PostSingle /> */}</div>
                 </div>
               </div>
             </div>
