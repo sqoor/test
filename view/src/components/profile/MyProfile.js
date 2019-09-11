@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import MyInfo from "./MyInfo";
 import MyPostsList from "./MyPostsList";
+
+import NewPost from "../home/NewPost";
 import axios from "axios";
 
 export class MyProfile extends Component {
@@ -47,8 +49,49 @@ export class MyProfile extends Component {
 
     return (
       <div>
-        <MyInfo myInfo={myInfo} />
-        <MyPostsList myPosts={myPosts} deletePost={deletePost} />
+        <div className="min_header"></div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-10 offset-md-1">
+              <div
+                className="User_profile text-center "
+                style={{
+                  marginTop: "-50px",
+                  marginTop: " -125px",
+                  background: "none",
+                  position: "relative",
+                  zIndex: "999"
+                }}
+              >
+                <div
+                  className="User_prof_img"
+                  style={{
+                    background: "#fff"
+                  }}
+                >
+                  <img src={myInfo.image} />
+                </div>
+                <h2 class="UserName">{myInfo.name}</h2>
+                <div className="My_posts">
+                  <div className="pos_anser">
+                    <span className="float-left">
+                      {" "}
+                      {`Email: ${myInfo.email}`}
+                    </span>
+                    <span className="float-right">{`Phone Number: ${myInfo.phone}`}</span>
+                  </div>
+                  {/* <NewPost /> */}
+                  {/* <div className="pos_anser">My Posts</div> */}
+                  {/* ..........postitem.......... */}
+                  <div>{/* <PostSingle /> */}</div>
+                </div>
+              </div>
+            </div>
+
+            {/* <MyInfo myInfo={myInfo} /> */}
+            <MyPostsList myPosts={myPosts} deletePost={deletePost} />
+          </div>
+        </div>
       </div>
     );
   }
