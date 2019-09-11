@@ -1,17 +1,40 @@
 @import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css";
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css";
-
+@import "https://cdn.bootcss.com/hover.css/2.3.1/css/hover-min.css";
+html {
+  scroll-behavior: smooth;
+}
 body {
-  background-color: #f4f4f4;
+  background: rgb(33, 40, 50) !important;
+  color: rgb(255, 255, 255) !important;
 }
 .btn-info {
-  background-color: #4f92ff;
-  border-color: #4f92ff;
+  background-color: #f79226 !important;
+  border-color: #f79226 !important;
+}
+.scrool_up {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 999;
+  cursor: pointer
+}
+.loder{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #717171;
+  z-index: 99999;
+  display: flex;
+  align-items: center;justify-content: center
+
 }
 .btn-info:hover {
-  color: #fff;
-  background-color: #4f92ff;
-  border-color: #4f92ff;
+  color: #f79226;
+  background-color: #000;
+  border-color: #000;
 }
 .navbar-light .navbar-nav .active > .nav-link,
 .navbar-light .navbar-nav .nav-link.active,
@@ -22,7 +45,8 @@ body {
 .min_header {
   position: relative;
   min-height: 400px;
-  background-image: url("https://edsurge.imgix.net/uploads/post/image/11914/teaching-1552092162.jpg?auto=compress%2Cformat&w=2000&h=810&fit=crop");
+  background-image: url("https://css-tricks.com/wp-content/uploads/2018/11/Untitled_Artwork.jpg");
+  background-size: cover;
   display: flex;
   color: white;
   align-items: center;
@@ -30,7 +54,7 @@ body {
 }
 .min_header::after {
   content: "";
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
   top: 0;
   left: 0;
@@ -38,7 +62,21 @@ body {
   bottom: 0;
   z-index: 1;
 }
-.min_header .container{
+.min_header::before {
+  content: "";
+  width: 300px;
+  height: 150px;
+  background-color: rgba(0, 0, 0, 0.7);
+  background: url(https://i.ibb.co/MRG7k3n/coders.png);
+  background-size: contain;
+  right: 100px;
+  top: 150px;
+  position: absolute;
+  z-index: 9;
+  background-repeat: no-repeat;
+
+}
+.min_header .container {
   position: relative;
   z-index: 2;
 }
@@ -50,14 +88,23 @@ body {
   background: #fff;
   padding: 10px 15px;
   margin: 25px 0;
-  box-shadow: 0 0 3px 2px rgba(79, 146, 255, 0.31);
+  transition: 0.3s ease-in;
+  border-radius: 10px;
 }
+
+.post_item:hover {
+  box-shadow: 0 0 11px 3px rgba(205, 161, 44, 0.65);
+  transition: 0.3s ease-in;
+}
+
 .User_info {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
-
+.User_info p h4 {
+  color: black;
+}
 .userinfo_date {
   font-size: 12px;
   color: #aaa;
@@ -73,7 +120,7 @@ body {
 
 .user_img {
   padding: 2px;
-  border: 3px solid #4f92ff;
+  border: 3px solid #f79226;
   display: inline-block;
   border-radius: 50%;
   height: 80px;
@@ -84,26 +131,28 @@ body {
   font-size: 22px;
   margin: 0 10px;
 }
-
 .post textarea {
   max-height: max-content;
   max-width: 100%;
   min-height: 200px;
   min-width: 100%;
-  /* overflow-y: scroll; */
-  word-wrap: wrap;
-  background: transparent;
+  word-wrap: break-word;
+  background: rgba(33, 40, 50, 0.87);
   border: none;
+  color: #fff;
+  padding: 10px;
 }
 .pos_anser {
-  background: #ddd;
+  background: #ffffff;
   padding: 10px;
   display: inline-block;
   width: 100%;
+  color: #f79226;
+  font-weight: bold
 }
 .pos_anser .anser_count {
   padding: 8px;
-  background: #4f92ff;
+  background: #f79226;
   color: #fff;
   float: left;
 }
@@ -128,7 +177,7 @@ body {
 
 .commints .commints_answers {
   /* background: #eee; */
-  border: 1px solid #4f92ff;
+  border: 1px solid #f79226;
   border-width: 1px 0 1px 0;
   padding: 10px;
   margin: 25px 0;
@@ -138,9 +187,11 @@ body {
 .add_Post_form {
   padding: 15px;
   background: #fff;
-  box-shadow: 0 0 3px 2px rgba(79, 146, 255, 0.31);
+  color:#000;
+  /* box-shadow: 0 0 11px 3px rgba(205, 161, 44, 0.65); */
   padding: 10px 15px;
   margin: 25px 0;
+  border-radius: 10px;
 }
 .add_Post_form input {
   margin: 10px 0;
@@ -156,7 +207,13 @@ body {
   margin-left: auto;
   margin-top: 10px;
 }
+.post h4 {
+  color: #000;
+}
 
+.post p {
+  color: #000;
+}
 .logIn {
   padding: 15px;
   background: #fff;
@@ -193,10 +250,18 @@ body {
 .User_prof_img {
   width: 200px;
   height: 200px;
-  border: 2px solid #4f92ff;
+  border: 3px solid #f79226;
   border-radius: 50%;
   display: inline-block;
+  transition: .5s
 }
+.User_prof_img:hover {
+
+transform: rotate(-360deg);
+transition: .5s
+
+}
+
 .User_prof_img img {
   width: 100%;
   height: 100;
@@ -238,7 +303,7 @@ body {
 }
 
 .login-10 .bg-color-10 {
-  background: #151922;
+  background: #353a40;
   min-height: 100vh;
   position: relative;
   text-align: center;
@@ -313,7 +378,7 @@ body {
   min-height: 100vh;
   z-index: 999;
   background: rgba(0, 0, 0, 0.04)
-    url("http://storage.googleapis.com/themevessel-products/logdy/main/assets/img/bg-image.jpg")
+    url("https://css-tricks.com/wp-content/uploads/2018/11/Untitled_Artwork.jpg")
     top left repeat;
   background-size: cover;
   opacity: 1;
@@ -331,7 +396,7 @@ body {
 .login-10 .info h1 {
   margin-bottom: 25px;
   font-size: 60px;
-  color: #2b2b2b;
+  color: #f79226;
 }
 
 .login-10 .info p {
@@ -392,13 +457,17 @@ input[type="radio"] {
 }
 
 .login-10 .login-inner-form .btn-theme {
-  background: #2a3148;
+  background: #f79226;
   border: none;
   color: #fff;
 }
-
-.login-10 .login-inner-form .btn-theme:hover {
+login-10 .login-inner-form .btn-theme:hover {
   background: #36405f;
+  
+}
+.login-10 .login-inner-form .btn-theme:hover {
+  background: #fff;
+  color: #36405f;
 }
 
 .login-10 .logo {
@@ -472,13 +541,12 @@ input[type="radio"] {
   width: auto;
   float: none;
   display: inline-block;
-  background: #151822;
   padding: 1px 20px;
   z-index: 1;
   position: relative;
   font-family: Open Sans;
   font-size: 13px;
-  color: #afafaf;
+  color:#f79226 ;
   text-transform: capitalize;
 }
 
@@ -545,7 +613,7 @@ input[type="radio"] {
 .login-10 .btn-section .link-btn {
   padding: 5px 20px;
   font-size: 13px;
-  border: solid 2px #2a3148;
+  border: solid 2px #f79226 ;
   background: transparent;
   margin-right: 5px;
   letter-spacing: 1px;
@@ -554,12 +622,16 @@ input[type="radio"] {
   color: #d6d6d6;
   text-decoration: none;
   text-decoration: blink;
+  transition: .3s
+}
+.login-10 .btn-section .link-btn:hover {
+  border: solid 2px #f79226 ;
+  background: #f79226 ;
+  transition: .3s
+
 }
 
-.login-10 .btn-section .active {
-  border: solid 2px #2a3148;
-  background: #2a3148;
-}
+
 
 .login-10 .login-inner-form input[type="checkbox"],
 input[type="radio"] {
@@ -580,31 +652,6 @@ input[type="radio"] {
 
 .login-10 .form-section p a {
   color: #d6d6d6;
-}
-
-.login-10 .facebook-bg {
-  background: #4867aa;
-}
-
-.login-10 .facebook-bg:hover {
-  background: #3b589e;
-  color: #fff;
-}
-
-.login-10 .twitter-bg {
-  background: #33ccff;
-}
-
-.login-10 .twitter-bg:hover {
-  background: #56d7fe;
-}
-
-.login-10 .google-bg {
-  background: #db4437;
-}
-
-.login-10 .google-bg:hover {
-  background: #dc4e41;
 }
 
 /** MEDIA **/
@@ -629,8 +676,8 @@ input[type="radio"] {
 }
 
 /** Login 10 start **/
-.side_bar{
-  margin-top: 25px
+.side_bar {
+  margin-top: 25px;
 }
 textarea.form-control.question_textarea {
   min-height: 70px;
@@ -659,7 +706,7 @@ textarea.form-control.question_textarea {
   background-color: #55acee;
 }
 .sochial_icons i:nth-child(3) {
-  background-color: #0077B5;
+  background-color: #0077b5;
 }
 .sochial_icons i:nth-child(4) {
   background-color: #131418;
@@ -667,10 +714,13 @@ textarea.form-control.question_textarea {
 .sochial_icons i:nth-child(5) {
   background-color: #dd4b39;
 }
-.video_side{
-  margin-top: 50px
+.video_side {
+  margin-top: 50px;
 }
-.facebook_side{
-  margin-top: 50px
-
+.facebook_side {
+  margin-top: 50px;
+}
+.nav_logo img {
+  margin: -6px 0 -10px 0px;
+  width: 120px;
 }
