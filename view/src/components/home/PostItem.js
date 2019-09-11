@@ -8,8 +8,8 @@ export class Post extends Component {
       _id,
       title,
       code,
-      text
-      // user
+      text,
+      user
     } = this.props.post;
     return (
       <div>
@@ -18,7 +18,7 @@ export class Post extends Component {
             <div className="user_img">
               {/* <img src="./images/user.png" alt="" /> */}
             </div>
-            <div className="user_name">Ahmad Alaarg</div>
+            <div className="user_name">{user.name}</div>
             <span className="userinfo_date">
               <b>Date:</b> 12/12/2019
             </span>

@@ -8,9 +8,18 @@ export class NewPost extends Component {
         const text = this.text.value;
         const title = this.title.value;
         const code = this.code.value
-        console.log(title, text, code);
+        const loggedUser = JSON.parse(localStorage.user);
+        const newUser = {
+            title,
+            text,
+            code,
+            user: {
+                name: loggedUser.name,
+                image: loggedUser.image
+            }
+        }
 
-        this.props.addPost({title, text, code})
+        this.props.addPost(newUser)
     }
     render() {
         return (
