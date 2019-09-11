@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 // import Axios from 'axios';
 
 export class Post extends Component {
   render() {
     const {
+      _id,
       title,
       code,
       text
@@ -26,12 +28,18 @@ export class Post extends Component {
           </div>
           <div className="post">
             <h4>{title}</h4>
-            <p><strong>{text}</strong></p>
+            <p>
+              <strong>{text}</strong>
+            </p>
             <textarea disabled={true} value={code}></textarea>
           </div>
           <div className="pos_anser">
             <div className="anser_count"> 30 Comment </div>
-            <button className="btn btn-info">Answer</button>
+            <Link className="text-light" to={{pathname: `post/${_id}`, state: this.props.post}}>
+            <button className="btn btn-info">
+              Answer
+            </button>
+            </Link>
           </div>
         </div>
       </div>
