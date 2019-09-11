@@ -11,7 +11,6 @@ export class Home extends Component {
   componentDidMount() {
     Axios.get("/posts")
       .then(res => {
-        console.log("RES.DATA", res.data);
         this.setState({ posts: res.data });
       })
       .catch(err => console.log(err));
@@ -53,16 +52,16 @@ export class Home extends Component {
               })}
             </div>
             <div className="col-md-4">
-              <div class="side_bar ">
+              <div className="side_bar ">
                 <form>
-                  <div class="input-group mb-3 animated fadeInRight">
+                  <div className="input-group mb-3 animated fadeInRight">
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       placeholder="Search text"
                     />
-                    <div class="input-group-append">
-                      <span class="input-group-text" id="basic-addon2">
+                    <div className="input-group-append">
+                      <span className="input-group-text" id="basic-addon2">
                         SEARCH
                       </span>
                     </div>
@@ -87,11 +86,12 @@ export class Home extends Component {
                   <h4>Who Are We </h4>
 
                   <iframe
+                    title="youtube"
                     width="100%"
                     src="https://www.youtube.com/embed/W81dlS5G8Gs"
-                    frameborder="0"
+                    frameBorder="0"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
+                    allowFullScreen
                   ></iframe>
                 </div>
 
@@ -99,13 +99,14 @@ export class Home extends Component {
                   <h4>Follow Us On Faceebok</h4>
 
                   <iframe
+                    title="fb"
                     src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Freact&tabs=timeline&width=350&height=110&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false&appId=185124325417884"
                     width="350"
                     height="150"
                     style={{ border: "none", overflow: "hidden" }}
                     scrolling="no"
-                    frameborder="0"
-                    allowTransparency="true"
+                    frameBorder="0"
+                    allowtransparency="true"
                     allow="encrypted-media"
                   ></iframe>
                 </div>
