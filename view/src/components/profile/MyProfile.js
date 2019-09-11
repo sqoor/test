@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import MyInfo from "./MyInfo";
 import MyPostsList from "./MyPostsList";
-<<<<<<< HEAD
-=======
+
 import NewPost from "../home/NewPost";
->>>>>>> f
 import axios from "axios";
 
 export class MyProfile extends Component {
