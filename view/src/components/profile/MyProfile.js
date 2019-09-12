@@ -10,13 +10,24 @@ export class MyProfile extends Component {
     myInfo: {},
     myPosts: []
   };
-  componentDidMount() {
-    const loggedUser = JSON.parse(localStorage.user)
-    
+
+  authGuard() {
+    let loggedUser = localStorage.user;
+ 
+    if(!loggedUser) {
+      this.props.history.push('/register');
+      return
+    }
+
+    loggedUser = JSON.parse(loggedUser);
     this.setState({ myInfo: loggedUser });
+  }
+
+  componentDidMount() {
+    this.authGuard();
 
     axios
-      .get(`/posts/user/${loggedUser._id}`)
+      .get(`/posts/user/${this.state.myInfo._id}`)
       .then(response => {
         this.setState({ myPosts: response.data });
       })
