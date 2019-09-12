@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router-dom'
 import Axios from "axios";
 
 export class Register extends Component {
@@ -30,9 +31,6 @@ export class Register extends Component {
     const email = this.loginEmail.value
     const password = this.loginPass.value
 
-    // console.log('email', email)
-    // console.log('password', password);
-
     Axios
       .post('/login', { email, password })
       .then(res => {
@@ -62,6 +60,9 @@ export class Register extends Component {
       const user = userCase[0];
       console.log('user', user);
       localStorage.setItem('user', JSON.stringify(user));
+
+
+      this.props.userLogged(true);
 
       this.props.history.push({
         pathname: '/',
@@ -100,6 +101,8 @@ export class Register extends Component {
     else if (typeof userCase === "object") {
       const user = userCase
       localStorage.setItem('user', JSON.stringify(user));
+
+      this.props.userLogged(true);
 
       this.props.history.push({
         pathname: '/',
@@ -239,4 +242,4 @@ export class Register extends Component {
   }
 }
 
-export default Register;
+export default withRouter(Register);
