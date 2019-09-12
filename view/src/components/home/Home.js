@@ -26,10 +26,8 @@ export class Home extends Component {
   }
 
   addPost = newPost => {
-    console.log("newPost", newPost);
     Axios.post("/posts", newPost)
       .then(res => {
-        console.log("RES.DATA", res.data);
         this.setState({ posts: [res.data, ...this.state.posts] });
       })
       .catch(err => console.log(err));

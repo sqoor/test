@@ -38,7 +38,6 @@ export class PostDetail extends Component {
 
     if(!this.commentInput.value) return 'empty input field';
 
-    console.log("state", this.props.location.state);
     const { _id } = this.props.location.state;
     const loggedUser = JSON.parse(localStorage.user);
 
