@@ -183,9 +183,9 @@ export class Register extends Component {
                       <input
                         ref={elem => this.phone = elem}
                         type="phone"
-                        name="numper"
+                        name="number"
                         className="animated bounceInLeft  input-text"
-                        placeholder="phone Numper"
+                        placeholder="phone Number"
                       />
                     </div>
                     <div className="form-group form-box">
