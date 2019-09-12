@@ -2,6 +2,18 @@ import React, { Component } from "react";
 import Axios from "axios";
 
 export class Register extends Component {
+
+  authGurd() {
+    let loggedUser = localStorage.user;
+    if(loggedUser)
+      loggedUser = JSON.parse(loggedUser);
+    if(loggedUser) this.props.history.push('/');
+  }
+
+  componentDidMount() {
+   this.authGurd();
+  }
+
   loginBtn = () => {
     document.getElementById("login").style.display = "block";
     document.getElementById("signup").style.display = "none";

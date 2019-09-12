@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
+import moment from 'moment';
+import mongoose from 'mongoose';
 import Comment from "./Comment";
 
 export class PostDetail extends Component {
@@ -12,10 +14,20 @@ export class PostDetail extends Component {
     this.addComment = this.addComment.bind(this);
   }
 
+  creationTime() {
+    const { _id } = this.props.location.state;
+    const isoDate = mongoose.Types.ObjectId(_id).getTimestamp();
+    const mom = new moment(isoDate);
+    const now = new moment();
+    const duration = moment.duration(now.diff(mom));
+
+    return duration.humanize();
+  }
+
   componentDidMount() {
-    Axios.get("/comments")
+    const { _id } = this.props.location.state;
+    Axios.get(`/comments/${_id}`)
       .then(res => {
-        console.log("TEST comments from api", res.data);
         this.setState({ comments: res.data });
       })
       .catch(err => console.log(err));
@@ -24,59 +36,64 @@ export class PostDetail extends Component {
   addComment(e) {
     e.preventDefault();
 
-    const { _id, code, text, title, user, userId } = this.props.location.state;
+    if(!this.commentInput.value) return 'empty input field';
+
+    console.log("state", this.props.location.state);
+    const { _id } = this.props.location.state;
+    const loggedUser = JSON.parse(localStorage.user);
 
     const newComment = {
-        // postId: _id,
-        // userId: logged._id,
-        // text: this.commentInput,
-        // user: {
-        //   name: loggedUser.name,
-        //   image: loggedUser.image
-        // }
+      postId: _id,
+      userId: loggedUser._id,
+      text: this.commentInput.value,
+      user: {
+        name: loggedUser.name,
+        image: loggedUser.image
+      }
     };
 
-    // Axios.post("/comments", newComment)
-    //   .then(res => {
-    //     console.log("TEST comments from api", res.data);
-    //     this.setState({ comments: [...this.state.comments, res.data] });
-    //   })
-    //   .catch(err => console.log(err));
+    Axios.post("/comments", newComment)
+      .then(res => {
+        this.setState({ comments: [...this.state.comments, res.data] });
+      })
+      .catch(err => console.log(err));
+
+    this.commentInput.value = "";
   }
 
   render() {
-    const { code, text, title, user, userId } = this.props.location.state;
+    const { code, text, title, user } = this.props.location.state;
     return (
+      <div>
       <div className="post_item">
         <div className="User_info">
           <div className="user_img">
-            <img src={""} alt={`${user.name} photo`} />
+            <img src={user.image ? user.image : ''} alt={`${user.name} photo`} />
           </div>
           <div className="user_name">{user.name}</div>
-          <span className="userinfo_date">
-            <b>Date:</b> 12/12/2019
-          </span>
-          <span className="userinfo_date">
-            <b>time:</b> 12:83 PM
+          <span className="userinfo_date float-right">
+          {this.creationTime()}
           </span>
         </div>
         <div className="post">
           <h4>{title}</h4>
           <p className="text">{text}</p>
-          <p className="code">{code}</p>
+          <pre className="code bg-dark p-3 text-light">{code}</pre>
         </div>
-        <div className="comments">
-          {this.state.comments.map(comment => (
-            <Comment comment={comment} />
-          ))}
-        </div>
-
         <div className="add-comment">
           <form onSubmit={this.addComment} className="form-inline">
-            <input ref={elem => (this.commentInput = elem)} type="text" />
-            <button>Comment</button>
+            <input className="form-control" ref={elem => (this.commentInput = elem)} type="text" />
+            <button className="btn btn-outline-dark">Comment</button>
           </form>
         </div>
+
+        
+      </div>
+      <div className="comments">
+      {this.state.comments.map(comment => (
+        <Comment key={comment._id} comment={comment} />
+      ))}
+    </div>
       </div>
     );
   }

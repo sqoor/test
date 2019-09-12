@@ -1,10 +1,27 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+// there is a bug toggle logout/ register and hide profile if user loggedin or not
+
 export class NavBar extends Component {
+  state = {
+    userLoggedIn: false
+  };
+
   scrollWin = () => window.scrollTo(0, 0);
 
-  
+
+  componentDidMount() {
+    this.setState({
+      userLoggedIn: this.props.userLoggedIn
+    })
+  }
+
+  logOut = () => {
+    this.setState({ userLoggedIn: false });
+    localStorage.clear();
+  }
+
   render() {
     setTimeout(() => {
       document.getElementById("loder").style.display = "none";
@@ -16,7 +33,11 @@ export class NavBar extends Component {
           <img src="https://i.ibb.co/MRG7k3n/coders.png" />
         </div>
         <Link className="navbar-brand nav_logo" to="/">
-          <img src="https://i.ibb.co/MRG7k3n/coders.png" className="hvr-grow" width="150" />
+          <img
+            src="https://i.ibb.co/MRG7k3n/coders.png"
+            className="hvr-grow"
+            width="150"
+          />
         </Link>
         <div className="scrool_up">
           <img
@@ -44,14 +65,22 @@ export class NavBar extends Component {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/profile/id">
-                Profile
-              </Link>
+              {/* {this.state.userLoggedIn ? ( */}
+                <Link className="nav-link" to="/profile">
+                  Profile
+                </Link>
+              {/*  ) : null} */}
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/register">
-                Register
-              </Link>
+              {/* {this.state.userLoggedIn ? ( */}
+                <Link className="nav-link" to="/" onClick={this.logOut}>
+                  Logout
+                </Link>
+              {/* ) : ( */}
+                <Link className="nav-link" to="/register">
+                  Register
+                </Link>
+              {/* )} */}
             </li>
           </ul>
         </div>

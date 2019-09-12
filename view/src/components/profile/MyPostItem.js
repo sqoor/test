@@ -1,25 +1,22 @@
 import React, { Component } from "react";
-// import mongoose from 'mongoose';
+import mongoose from "mongoose";
+import moment from "moment";
+import { Link } from 'react-router-dom'
 
 export class MyPostItem extends Component {
+  creationTime() {
+    const { _id } = this.props;
+    const isoDate = mongoose.Types.ObjectId(_id).getTimestamp();
+    const mom = new moment(isoDate);
+    const now = new moment();
+    const duration = moment.duration(now.diff(mom));
+
+    return duration.humanize();
+  }
+
   render() {
-    const { _id, image, title, text, code, deletePost } = this.props;
-
-//
-
-// const isoDate = mongoose.Types.ObjectId(_id).getTimestamp()
-// const date = new Date(isoDate);
-// console.log (date)
-
-const day = new Date ().getDate()
-const month= new Date().getMonth()
-const year= new Date().getFullYear()
-const hour=new Date().getHours()
-const minutes=new Date().getMinutes()
-
-
-//
-
+    const { deletePost } = this.props;
+    const { _id, title, text, code, user } = this.props.post
 
     return (
       <div>
@@ -29,14 +26,11 @@ const minutes=new Date().getMinutes()
               <div className="post_item">
                 <div className="User_info">
                   <div className="user_img">
-                    <img src={image} alt='profile'/>
+                    <img src={user.image} alt="profile" />
                   </div>
-                  <div className="user_name">Me</div>
-                  <span className="userinfo_date">
-                    <b>Date:</b> {`${day}/${month}/${year}`}
-                  </span>
-                  <span className="userinfo_date">
-                    <b>time:</b> {`${hour}:${minutes}`}
+                  <div className="user_name">{user.name}</div>
+                  <span className="userinfo_date float-right">
+                    {this.creationTime()}
                   </span>
                 </div>
                 <div className="post">
@@ -47,21 +41,24 @@ const minutes=new Date().getMinutes()
                 </div>
                 <div className="pos_anser_single">
                   <p>the Answers</p>
-                  <button className="btn btn-info">Answer</button>
-                </div>
-                <div>
-                  <button
-                    type="button"
-                    className="btn btn-info"
-                    onClick={deletePost.bind(this, _id)}
+                  <Link
+                    className="text-light"
+                    to={{ pathname: `/post/${_id}`, state: this.props.post }}
                   >
-                    {" "}
-                    Delete{" "}
-                  </button>
+                    <button className="btn btn-info">Answers</button>
+                  </Link>
                 </div>
+                <div></div>
                 <div className="commints">
                   <div className="commints_answers">10 Comments</div>
                 </div>
+                <button
+                  type="button"
+                  className="btn btn-outline-danger rounded-circle"
+                  onClick={deletePost.bind(this, _id)}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           </div>

@@ -5,8 +5,17 @@ import Axios from "axios";
 
 export class Home extends Component {
   state = {
-    posts: []
+    posts: [],
   };
+
+  userLoggedIn() {
+    let loggedUser = localStorage.user;
+    
+    if(loggedUser)
+      loggedUser = JSON.parse(loggedUser);
+
+    return loggedUser ? true : false;
+  }
 
   componentDidMount() {
     Axios.get("/posts")
@@ -39,14 +48,13 @@ export class Home extends Component {
               to empower
               <br /> everyone to share their knowledge.
             </p>
-
-            <button className="btn btn-info">Create ANew Account</button>
+            {/* <button className="btn btn-info">Create ANew Account</button> */}
           </div>
         </div>
         <div className="container">
           <div className="row">
             <div className="col-md-8">
-              <NewPost addPost={this.addPost} />
+              {this.userLoggedIn() ? <NewPost addPost={this.addPost} /> : null}
               {this.state.posts.map(post => {
                 return <Post post={post} key={post._id} />;
               })}
