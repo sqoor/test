@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+// there is a bug toggle logout/ register and hide profile if user loggedin or not
+
 export class NavBar extends Component {
   state = {
     userLoggedIn: false
