@@ -11,16 +11,24 @@ import NavBar from "./components/NavBar";
 import PostDetail from "./components/posts/PostDetail";
 
 class App extends Component {
+  state = {
+    isLogged: false
+  }
+
+  userLogged = (value) => {
+    this.setState({ isLogged: !this.state.isLogged })
+  }
+
   render() {
     return (
       <div>
         <Router>
-          <NavBar />
+          <NavBar isLogged={this.state.isLogged} userLogged={this.userLogged} />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/profile" component={MyProfile} />
             <Route path="/post/:id" component={PostDetail} />
-            <Route path="/register" component={Register} />
+            <Route path="/register" component={() => <Register userLogged={this.userLogged} />} />
             <Route path="/contact" component={Contact} />
             <Route component={NotFound} />
           </Switch>

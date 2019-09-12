@@ -21,19 +21,22 @@ export class MyProfile extends Component {
 
     loggedUser = JSON.parse(loggedUser);
     this.setState({ myInfo: loggedUser });
+    return loggedUser;
   }
 
   componentDidMount() {
-    this.authGuard();
-
+    const loggedUser = this.authGuard();
+    
+    if(loggedUser) {
     axios
-      .get(`/posts/user/${this.state.myInfo._id}`)
+      .get(`/posts/user/${loggedUser._id}`)
       .then(response => {
         this.setState({ myPosts: response.data });
       })
       .catch(error => {
         console.log("Error", error);
       });
+    }
   }
 
   deletePost = id => {

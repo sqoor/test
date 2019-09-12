@@ -4,23 +4,12 @@ import { Link } from "react-router-dom";
 // there is a bug toggle logout/ register and hide profile if user loggedin or not
 
 export class NavBar extends Component {
-  state = {
-    userLoggedIn: false
-  };
-
   scrollWin = () => window.scrollTo(0, 0);
 
-
-  componentDidMount() {
-    this.setState({
-      userLoggedIn: this.props.userLoggedIn
-    })
-  }
-
   logOut = () => {
-    this.setState({ userLoggedIn: false });
+    this.props.userLogged(false)
     localStorage.clear();
-  }
+  };
 
   render() {
     setTimeout(() => {
@@ -65,22 +54,22 @@ export class NavBar extends Component {
               </Link>
             </li>
             <li className="nav-item">
-              {/* {this.state.userLoggedIn ? ( */}
+              {this.props.isLogged ? (
                 <Link className="nav-link" to="/profile">
                   Profile
                 </Link>
-              {/*  ) : null} */}
+              ) : null}
             </li>
             <li className="nav-item">
-              {/* {this.state.userLoggedIn ? ( */}
+              {this.props.isLogged ? (
                 <Link className="nav-link" to="/" onClick={this.logOut}>
                   Logout
                 </Link>
-              {/* ) : ( */}
+              ) : (
                 <Link className="nav-link" to="/register">
                   Register
                 </Link>
-              {/* )} */}
+              )}
             </li>
           </ul>
         </div>
