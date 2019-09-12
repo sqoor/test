@@ -34,7 +34,6 @@ export class Register extends Component {
     Axios
       .post('/login', { email, password })
       .then(res => {
-        console.log('login', res.data);
         this.existCases(res.data);
       })
       .catch(err => {
@@ -49,7 +48,6 @@ export class Register extends Component {
       alert('email or password do not match');
 
     else if (Array.isArray(userCase) && userCase.length) {
-      console.log(userCase);
       // set localstorage  // DONE 
       // redirect to home page
       // check the browser
@@ -58,7 +56,6 @@ export class Register extends Component {
       // JSON.parse(localStorage.user)
 
       const user = userCase[0];
-      console.log('user', user);
       localStorage.setItem('user', JSON.stringify(user));
 
 
@@ -94,7 +91,6 @@ export class Register extends Component {
   }
 
   signUpCases(userCase) {
-    console.log(userCase);
     if (userCase === 'this email already have an account')
       return alert('this email already have an account');
 
