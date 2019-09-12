@@ -19,13 +19,14 @@ export class NavBar extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div className="loder" id="loder" onClick={this.hidenloder}>
-          <img src="https://i.ibb.co/MRG7k3n/coders.png" />
+          <img src="https://i.ibb.co/MRG7k3n/coders.png" alt="loader" />
         </div>
         <Link className="navbar-brand nav_logo" to="/">
           <img
             src="https://i.ibb.co/MRG7k3n/coders.png"
             className="hvr-grow"
             width="150"
+            alt="loader"
           />
         </Link>
         <div className="scrool_up">
@@ -33,6 +34,7 @@ export class NavBar extends Component {
             onClick={this.scrollWin}
             src="http://www.kreeti.com/images/scroll_top.png"
             width="60"
+            alt="loader"
           />
         </div>
         <button

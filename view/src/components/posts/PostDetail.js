@@ -68,7 +68,7 @@ export class PostDetail extends Component {
       <div className="post_item">
         <div className="User_info">
           <div className="user_img">
-            <img src={user.image ? user.image : ''} alt={`${user.name} photo`} />
+            <img src={user.image ? user.image : ''} alt={`${user.name}`} />
           </div>
           <div className="user_name">{user.name}</div>
           <span className="userinfo_date float-right">
