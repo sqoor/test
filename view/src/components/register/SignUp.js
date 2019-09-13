@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Axios from "axios";
 import { withRouter } from "react-router-dom";
 import { ToastContainer, toast, Zoom } from "react-toastify";
+import SimpleReactValidator from "simple-react-validator";
 
 export class SignUp extends Component {
   constructor() {
@@ -12,10 +13,24 @@ export class SignUp extends Component {
       email: "",
       phone: "",
       password: "",
+      confirm: ""
     };
 
     this.changeHandler = this.changeHandler.bind(this);
     this.submitHanlder = this.submitHanlder.bind(this);
+    this.validator = new SimpleReactValidator({
+      element: message => <div className="text-danger m-0">{message}</div>,
+      validators: {
+        match: {
+          message: 'Do not match the password.',
+          rule: (val, params, validator) => {
+            return val === this.state.password
+          },
+          messageReplace: (message, params) => message.replace(':values', this.helpers.toSentence(params)),  // optional
+          required: true  // optional
+        }
+      }
+    });
   }
 
   changeHandler(e) {
@@ -27,16 +42,15 @@ export class SignUp extends Component {
   submitHanlder(e) {
     e.preventDefault();
 
-    const newUser = this.state;
-
-    if (!(newUser.name && newUser.email && newUser.phone && newUser.password))
-      return toast.error("Empty input fields!");
-
-    Axios.post("/signup", newUser)
-      .then(res => {
-        this.checkResponse(res.data);
-      })
-      .catch(err => console.log(err));
+    if (this.validator.allValid()) {
+      Axios.post("/signup", this.state)
+        .then(res => this.checkResponse(res.data))
+        .catch(err => console.log(err));
+    } else {
+      toast.error("Check the input fields");
+      this.validator.showMessages();
+      this.forceUpdate();
+    }
   }
 
   checkResponse(res) {
@@ -73,6 +87,7 @@ export class SignUp extends Component {
             className="animated bounceInRight  input-text"
             placeholder="User Name"
           />
+           {this.validator.message("name", this.state.name, "required|alpha_space")}
         </div>
         <div className="form-group form-box">
           <input
@@ -83,6 +98,7 @@ export class SignUp extends Component {
             className="animated bounceInRight input-text"
             placeholder="Email Address"
           />
+           {this.validator.message("email", this.state.email, "required|email")}
         </div>
         <div className="form-group form-box">
           <input
@@ -93,6 +109,7 @@ export class SignUp extends Component {
             className="animated bounceInRight input-text"
             placeholder="phone Number"
           />
+           {this.validator.message("phone", this.state.phone, "required|numeric")}
         </div>
         <div className="form-group form-box">
           <input
@@ -103,6 +120,18 @@ export class SignUp extends Component {
             className="animated bounceInRight input-text"
             placeholder="Password"
           />
+           {this.validator.message("password", this.state.password, "required|min:8|max:50")}
+        </div>
+        <div className="form-group form-box">
+          <input
+            onChange={this.changeHandler}
+            value={this.state.confirm}
+            type="password"
+            name="confirm"
+            className="animated bounceInRight input-text"
+            placeholder="Confirm Password"
+          />
+           {this.validator.message("confirm", this.state.confirm, "required|match")}
         </div>
         <div className="form-group form-box image">
           <div className="image-file animated bounceInRight">
