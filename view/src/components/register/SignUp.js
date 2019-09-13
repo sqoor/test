@@ -23,11 +23,7 @@ export class SignUp extends Component {
       validators: {
         match: {
           message: 'Do not match the password.',
-          rule: (val, params, validator) => {
-            return val === this.state.password
-          },
-          messageReplace: (message, params) => message.replace(':values', this.helpers.toSentence(params)),  // optional
-          required: true  // optional
+          rule: (val) => val === this.state.password
         }
       }
     });
