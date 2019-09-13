@@ -13,7 +13,9 @@ export class SignUp extends Component {
       email: "",
       phone: "",
       password: "",
-      confirm: ""
+      confirm: "",
+      image: "",
+      imageSrc: ""
     };
 
     this.changeHandler = this.changeHandler.bind(this);
@@ -22,17 +24,59 @@ export class SignUp extends Component {
       element: message => <div className="text-danger m-0">{message}</div>,
       validators: {
         match: {
-          message: 'Do not match the password.',
-          rule: (val) => val === this.state.password
+          message: "Do not match the password.",
+          rule: val => val === this.state.password
         }
       }
     });
   }
 
   changeHandler(e) {
+    if (e.target.name === "image") {
+      try {
+        this.setState({ imageSrc: URL.createObjectURL(e.target.files[0]) });
+        this.convertTo64base();
+      } catch (e) {
+        return;
+      }
+
+
+
+      this.showModal();
+      return;
+    }
+
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  convertTo64base() {
+    const c = document.createElement('canvas');
+    const img = document.getElementById('user-image');
+    c.height = img.naturalHeight;
+    c.width = img.naturalWidth;
+
+    const ctx = c.getContext('2d');
+    ctx.drawImage(img, 0, 0, c.width, c.height);
+    
+    const base64String = c.toDataURL();
+
     this.setState({
-      [e.target.name]: e.target.value
-    });
+      image: base64String
+    })
+
+    return base64String;
+  }
+
+  showModal() {
+    const imageModal = document.querySelector("#exampleModal");
+    imageModal.classList.add("show");
+    imageModal.style.display = "block";
+  }
+
+  hideModal() {
+    const imageModal = document.querySelector("#exampleModal");
+    imageModal.classList.remove("show");
+    imageModal.style.display = "none";
   }
 
   submitHanlder(e) {
@@ -67,93 +111,147 @@ export class SignUp extends Component {
 
   render() {
     return (
-      <form onSubmit={this.submitHanlder}>
-        <ToastContainer
-          position={toast.POSITION.TOP_LEFT}
-          transition={Zoom}
-          toastClassName="rounded"
-          hideProgressBar={true}
-        />
-        <div className="form-group form-box">
-          <input
-            onChange={this.changeHandler}
-            value={this.state.name}
-            type="text"
-            name="name"
-            className="animated bounceInRight  input-text"
-            placeholder="User Name"
+      <div>
+        <form onSubmit={this.submitHanlder}>
+          <ToastContainer
+            position={toast.POSITION.TOP_LEFT}
+            transition={Zoom}
+            toastClassName="rounded"
+            hideProgressBar={true}
           />
-           {this.validator.message("name", this.state.name, "required|alpha_space")}
-        </div>
-        <div className="form-group form-box">
-          <input
-            onChange={this.changeHandler}
-            value={this.state.email}
-            type="email"
-            name="email"
-            className="animated bounceInRight input-text"
-            placeholder="Email Address"
-          />
-           {this.validator.message("email", this.state.email, "required|email")}
-        </div>
-        <div className="form-group form-box">
-          <input
-            onChange={this.changeHandler}
-            value={this.state.phone}
-            type="phone"
-            name="phone"
-            className="animated bounceInRight input-text"
-            placeholder="phone Number"
-          />
-           {this.validator.message("phone", this.state.phone, "required|numeric")}
-        </div>
-        <div className="form-group form-box">
-          <input
-            onChange={this.changeHandler}
-            value={this.state.password}
-            type="password"
-            name="password"
-            className="animated bounceInRight input-text"
-            placeholder="Password"
-          />
-           {this.validator.message("password", this.state.password, "required|min:8|max:50")}
-        </div>
-        <div className="form-group form-box">
-          <input
-            onChange={this.changeHandler}
-            value={this.state.confirm}
-            type="password"
-            name="confirm"
-            className="animated bounceInRight input-text"
-            placeholder="Confirm Password"
-          />
-           {this.validator.message("confirm", this.state.confirm, "required|match")}
-        </div>
-        <div className="form-group form-box image">
-          <div className="image-file animated bounceInRight">
+          <div className="form-group form-box">
             <input
-              accept="image/png, image/jpeg"
-              name="imgUrl"
-              type="file"
-              className="custom-file-input"
-              id="imageInput"
-              aria-describedby="imageInput"
+              onChange={this.changeHandler}
+              value={this.state.name}
+              type="text"
+              name="name"
+              className="animated bounceInRight  input-text"
+              placeholder="User Name"
             />
-            <label
-              className="custom-file-label text-left text-muted"
-              htmlFor="imageInput"
-            >
-              Upload your image
-            </label>
+            {this.validator.message(
+              "name",
+              this.state.name,
+              "required|alpha_space"
+            )}
+          </div>
+          <div className="form-group form-box">
+            <input
+              onChange={this.changeHandler}
+              value={this.state.email}
+              type="email"
+              name="email"
+              className="animated bounceInRight input-text"
+              placeholder="Email Address"
+            />
+            {this.validator.message(
+              "email",
+              this.state.email,
+              "required|email"
+            )}
+          </div>
+          <div className="form-group form-box">
+            <input
+              onChange={this.changeHandler}
+              value={this.state.phone}
+              type="phone"
+              name="phone"
+              className="animated bounceInRight input-text"
+              placeholder="phone Number"
+            />
+            {this.validator.message(
+              "phone",
+              this.state.phone,
+              "required|numeric"
+            )}
+          </div>
+          <div className="form-group form-box">
+            <input
+              onChange={this.changeHandler}
+              value={this.state.password}
+              type="password"
+              name="password"
+              className="animated bounceInRight input-text"
+              placeholder="Password"
+            />
+            {this.validator.message(
+              "password",
+              this.state.password,
+              "required|min:8|max:50"
+            )}
+          </div>
+          <div className="form-group form-box">
+            <input
+              onChange={this.changeHandler}
+              value={this.state.confirm}
+              type="password"
+              name="confirm"
+              className="animated bounceInRight input-text"
+              placeholder="Confirm Password"
+            />
+            {this.validator.message(
+              "confirm",
+              this.state.confirm,
+              "required|match"
+            )}
+          </div>
+          <div className="form-group form-box image">
+            <div className="image-file animated bounceInRight">
+              <input
+                onChange={this.changeHandler}
+                accept="image/png, image/jpeg"
+                name="image"
+                type="file"
+                className="custom-file-input"
+                id="imageInput"
+                aria-describedby="imageInput"
+              />
+              <label
+                className="custom-file-label text-left text-muted"
+                htmlFor="imageInput"
+              >
+                Upload your image
+              </label>
+            </div>
+          </div>
+          <div className="checkbox clearfix"></div>
+          <div className="form-group mb-0">
+            <button type="submit" className="btn-md btn-theme btn-block">
+              sign Up
+            </button>
+          </div>
+        </form>
+        <div
+          className="modal fade"
+          id="exampleModal"
+          tabIndex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-body" style={{ height: "19rem" }}>
+                <img
+                  id="user-image"
+                  src={this.state.imageSrc}
+                  alt="user"
+                  style={{ display: "block", width: "100%", height: "100%", visibility: this.state.image ? "visible" : "hidden" }}
+                />
+              </div>
+              <div className="modal-footer">
+                <button
+                  onClick={this.hideModal}
+                  type="button"
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="checkbox clearfix"></div>
-        <div className="form-group mb-0">
-          <button type="submit" className="btn-md btn-theme btn-block">
-            sign Up
-          </button>
-        </div>
-      </form>
+      </div>
     );
   }
 }

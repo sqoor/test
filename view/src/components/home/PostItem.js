@@ -22,7 +22,7 @@ export class Post extends Component {
         <div className="post_item wow slideInLeft">
           <div className="User_info">
             <div className="user_img">
-              {/* <img src="./images/user.png" alt="" /> */}
+              <img src={user.image} alt={user.name} />
             </div>
             <div className="user_name">{user.name}</div>
             <span className="userinfo_date float-right">{this.creationTime()}</span>

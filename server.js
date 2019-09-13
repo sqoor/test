@@ -6,7 +6,7 @@ const connectToDb = require("./db/connectionDB");
 
 connectToDb();
 
-app.use(express.json());
+app.use(express.json({limit:'50mb'}));
 app.use(cors());
 
 routes(app);

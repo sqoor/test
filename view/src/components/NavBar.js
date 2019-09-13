@@ -19,7 +19,7 @@ export class NavBar extends Component {
   render() {
     setTimeout(() => {
       document.getElementById("loder").style.display = "none";
-    }, 10);
+    }, 1500);
 
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
