@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import Login from "./Login";
+import { withRouter } from 'react-router-dom';
 import SignUp from "./SignUp";
+import Login from "./Login";
 
 export class Register extends Component {
   authGurd() {
@@ -24,9 +24,6 @@ export class Register extends Component {
     document.getElementById("signup").style.display = "block";
   };
 
-
-  
-
   render() {
     return (
       <div className="login-10">
@@ -46,8 +43,8 @@ export class Register extends Component {
                   </button>
                 </div>
                 <div className="login-inner-form" id="login">
-                 <SignUp />
-                 <div className="extra-login">
+                  <Login userLogged={this.props.userLogged} />
+                  <div className="extra-login">
                     <span>Code Talkerz</span>
                   </div>
                 </div>
@@ -56,7 +53,7 @@ export class Register extends Component {
                   style={{ display: "none" }}
                   id="signup"
                 >
-                  <Login />
+                  <SignUp userLogged={this.props.userLogged} />
                   <div className="extra-login">
                     <span>Code Talkerz</span>
                   </div>

@@ -1,51 +1,60 @@
 import React, { Component } from "react";
-import Axios from 'axios';
+import Axios from "axios";
+import { withRouter } from "react-router-dom";
 
 export class SignUp extends Component {
+  signupHandler = e => {
+    e.preventDefault();
 
-    signupHandler = e => {
-        e.preventDefault();
-    
-        const newUser = {
-          name: this.name.value,
-          email: this.email.value,
-          phone: this.phone.value,
-          password: this.password.value,
-          image: this.image.value
-        };
-    
-        if (!(newUser.email && newUser.phone && newUser.password))
-          return alert("empty fields");
-    
-        Axios.post("/signup", newUser)
-          .then(res => {
-            this.signUpCases(res.data);
-          })
-          .catch(err => console.log(err));
-      };
-    
-      signUpCases(userCase) {
-        if (userCase === "this email already have an account")
-          return alert("this email already have an account");
-        else if (typeof userCase === "object") {
-          const user = userCase;
-          localStorage.setItem("user", JSON.stringify(user));
-    
-          this.props.userLogged(true);
-    
-          this.props.history.push({
-            pathname: "/",
-            state: user
-          });
-        }
-      }
+    const newUser = {
+      name: this.name.value,
+      email: this.email.value,
+      phone: this.phone.value,
+      password: this.password.value,
+      image: this.image.value
+    };
+
+    if (!(newUser.email && newUser.phone && newUser.password))
+      return alert("empty fields");
+
+    Axios.post("/signup", newUser)
+      .then(res => {
+        this.signUpCases(res.data);
+      })
+      .catch(err => console.log(err));
+  };
+
+  signUpCases(userCase) {
+    if (userCase === "this email already have an account")
+      return alert("this email already have an account");
+    else if (typeof userCase === "object") {
+      const user = userCase;
+      localStorage.setItem("user", JSON.stringify(user));
+
+      this.props.userLogged(true);
+
+      this.props.history.push({
+        pathname: "/",
+        state: user
+      });
+    }
+  }
 
   render() {
     return (
-      <form onSubmit={this.loginHandler} action="" method="GET">
+      <form onSubmit={this.signupHandler} action="" method="GET">
         <div className="form-group form-box">
           <input
-            ref={elem => (this.loginEmail = elem)}
+            ref={elem => (this.name = elem)}
+            type="text"
+            name="name"
+            className="animated bounceInLeft  input-text"
+            placeholder="User Name"
+          />
+        </div>
+        <div className="form-group form-box">
+          <input
+            ref={elem => (this.email = elem)}
             type="email"
             name="email"
             className="animated bounceInLeft input-text"
@@ -54,17 +63,45 @@ export class SignUp extends Component {
         </div>
         <div className="form-group form-box">
           <input
-            ref={elem => (this.loginPass = elem)}
+            ref={elem => (this.phone = elem)}
+            type="phone"
+            name="number"
+            className="animated bounceInLeft  input-text"
+            placeholder="phone Number"
+          />
+        </div>
+        <div className="form-group form-box">
+          <input
+            ref={elem => (this.password = elem)}
             type="password"
             name="Password"
             className="animated bounceInLeft  input-text"
             placeholder="Password"
           />
         </div>
+        <div className="form-group form-box image">
+          <div className="image-file animated bounceInLeft">
+            <input
+              ref={elem => (this.image = elem)}
+              accept="image/png, image/jpeg"
+              name="imgUrl"
+              type="file"
+              className="custom-file-input"
+              id="imageInput"
+              aria-describedby="imageInput"
+            />
+            <label
+              className="custom-file-label text-left text-muted"
+              htmlFor="imageInput"
+            >
+              Upload your image
+            </label>
+          </div>
+        </div>
         <div className="checkbox clearfix"></div>
         <div className="form-group mb-0">
           <button type="submit" className="btn-md btn-theme btn-block">
-            Login
+            sign Up
           </button>
         </div>
       </form>
@@ -72,4 +109,4 @@ export class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);
