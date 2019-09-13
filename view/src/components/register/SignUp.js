@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Axios from "axios";
 import { withRouter } from "react-router-dom";
 
+
 export class SignUp extends Component {
   signupHandler = e => {
     e.preventDefault();
@@ -14,21 +15,21 @@ export class SignUp extends Component {
       image: this.image.value
     };
 
-    if (!(newUser.email && newUser.phone && newUser.password))
+    if (!(newUser.name && newUser.email && newUser.phone && newUser.password))
       return alert("empty fields");
 
     Axios.post("/signup", newUser)
       .then(res => {
-        this.signUpCases(res.data);
+        this.checkResponse(res.data);
       })
       .catch(err => console.log(err));
   };
 
-  signUpCases(userCase) {
-    if (userCase === "this email already have an account")
+  checkResponse(res) {
+    if (res === "this email already have an account")
       return alert("this email already have an account");
-    else if (typeof userCase === "object") {
-      const user = userCase;
+    else if (typeof res === "object") {
+      const user = res;
       localStorage.setItem("user", JSON.stringify(user));
 
       this.props.userLogged(true);
@@ -108,5 +109,6 @@ export class SignUp extends Component {
     );
   }
 }
+
 
 export default withRouter(SignUp);

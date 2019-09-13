@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-// there is a bug toggle logout/ register and hide profile if user loggedin or not
 
 export class NavBar extends Component {
   scrollWin = () => window.scrollTo(0, 0);
@@ -14,7 +13,7 @@ export class NavBar extends Component {
   render() {
     setTimeout(() => {
       document.getElementById("loder").style.display = "none";
-    }, 2000);
+    }, 10);
 
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -79,5 +78,6 @@ export class NavBar extends Component {
     );
   }
 }
+
 
 export default NavBar;

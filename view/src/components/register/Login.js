@@ -3,51 +3,44 @@ import Axios from "axios";
 import { withRouter } from "react-router-dom";
 
 export class Login extends Component {
-  loginHandler = e => {
+  submitHandler = e => {
     e.preventDefault();
 
-    const email = this.loginEmail.value;
-    const password = this.loginPass.value;
+    const email = this.emailInput.value;
+    const password = this.passwordInput.value;
 
     Axios.post("/login", { email, password })
       .then(res => {
-        this.existCases(res.data);
+        this.checkResponse(res.data);
       })
       .catch(err => {
         console.log(err);
       });
   };
 
-  existCases = userCase => {
-    if (userCase === "user not existed") alert("user not existed");
-    else if (userCase === "email or password do not match")
+  checkResponse = res => {
+    if (res === "user not existed") alert("user not existed");
+    else if (res === "email or password do not match")
       alert("email or password do not match");
-    else if (Array.isArray(userCase) && userCase.length) {
-      // set localstorage  // DONE
-      // redirect to home page
-      // check the browser
-      // set localstorage as object // JSON.stringify
-      // get localstorage as object // JSON.parse
-      // JSON.parse(localStorage.user)
-
-      const user = userCase[0];
-      localStorage.setItem("user", JSON.stringify(user));
+    else if (Array.isArray(res) && res.length) {
+      const loggedUser = res[0];
+      localStorage.setItem("user", JSON.stringify(loggedUser));
 
       this.props.userLogged(true);
 
       this.props.history.push({
         pathname: "/",
-        state: user
+        state: loggedUser
       });
     }
   };
 
   render() {
     return (
-      <form onSubmit={this.loginHandler}>
+      <form onSubmit={this.submitHandler}>
         <div className="form-group form-box">
           <input
-            ref={elem => (this.loginEmail = elem)}
+            ref={elem => (this.emailInput = elem)}
             type="email"
             name="email"
             className="animated bounceInLeft input-text"
@@ -56,7 +49,7 @@ export class Login extends Component {
         </div>
         <div className="form-group form-box">
           <input
-            ref={elem => (this.loginPass = elem)}
+            ref={elem => (this.passwordInput = elem)}
             type="password"
             name="Password"
             className="animated bounceInLeft  input-text"
