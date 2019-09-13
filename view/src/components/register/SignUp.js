@@ -1,33 +1,47 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import { withRouter } from "react-router-dom";
-
+import { ToastContainer, toast, Zoom } from "react-toastify";
 
 export class SignUp extends Component {
-  signupHandler = e => {
-    e.preventDefault();
+  constructor() {
+    super();
 
-    const newUser = {
-      name: this.name.value,
-      email: this.email.value,
-      phone: this.phone.value,
-      password: this.password.value,
-      image: this.image.value
+    this.state = {
+      name: "",
+      email: "",
+      phone: "",
+      password: "",
     };
 
+    this.changeHandler = this.changeHandler.bind(this);
+    this.submitHanlder = this.submitHanlder.bind(this);
+  }
+
+  changeHandler(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  submitHanlder(e) {
+    e.preventDefault();
+
+    const newUser = this.state;
+
     if (!(newUser.name && newUser.email && newUser.phone && newUser.password))
-      return alert("empty fields");
+      return toast.error("Empty input fields!");
 
     Axios.post("/signup", newUser)
       .then(res => {
         this.checkResponse(res.data);
       })
       .catch(err => console.log(err));
-  };
+  }
 
   checkResponse(res) {
     if (res === "this email already have an account")
-      return alert("this email already have an account");
+      return toast.error("This email already have an account!");
     else if (typeof res === "object") {
       const user = res;
       localStorage.setItem("user", JSON.stringify(user));
@@ -43,10 +57,17 @@ export class SignUp extends Component {
 
   render() {
     return (
-      <form onSubmit={this.signupHandler} action="" method="GET">
+      <form onSubmit={this.submitHanlder}>
+        <ToastContainer
+          position={toast.POSITION.TOP_LEFT}
+          transition={Zoom}
+          toastClassName="rounded"
+          hideProgressBar={true}
+        />
         <div className="form-group form-box">
           <input
-            ref={elem => (this.name = elem)}
+            onChange={this.changeHandler}
+            value={this.state.name}
             type="text"
             name="name"
             className="animated bounceInRight  input-text"
@@ -55,7 +76,8 @@ export class SignUp extends Component {
         </div>
         <div className="form-group form-box">
           <input
-            ref={elem => (this.email = elem)}
+            onChange={this.changeHandler}
+            value={this.state.email}
             type="email"
             name="email"
             className="animated bounceInRight input-text"
@@ -64,18 +86,20 @@ export class SignUp extends Component {
         </div>
         <div className="form-group form-box">
           <input
-            ref={elem => (this.phone = elem)}
+            onChange={this.changeHandler}
+            value={this.state.phone}
             type="phone"
-            name="number"
+            name="phone"
             className="animated bounceInRight input-text"
             placeholder="phone Number"
           />
         </div>
         <div className="form-group form-box">
           <input
-            ref={elem => (this.password = elem)}
+            onChange={this.changeHandler}
+            value={this.state.password}
             type="password"
-            name="Password"
+            name="password"
             className="animated bounceInRight input-text"
             placeholder="Password"
           />
@@ -83,7 +107,6 @@ export class SignUp extends Component {
         <div className="form-group form-box image">
           <div className="image-file animated bounceInRight">
             <input
-              ref={elem => (this.image = elem)}
               accept="image/png, image/jpeg"
               name="imgUrl"
               type="file"
@@ -109,6 +132,5 @@ export class SignUp extends Component {
     );
   }
 }
-
 
 export default withRouter(SignUp);
