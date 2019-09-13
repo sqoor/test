@@ -6,9 +6,8 @@ import Contact from "./components/Contact";
 import NotFound from "./components/NotFound";
 import Register from "./components/register/Register";
 import MyProfile from "./components/profile/MyProfile";
-// import PostsPage from "./components/posts/PostPage";
+import PostPage from "./components/posts/PostPage";
 import NavBar from "./components/NavBar";
-import PostDetail from "./components/posts/PostDetail";
 
 class App extends Component {
   state = {
@@ -27,7 +26,7 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/profile" component={MyProfile} />
-            <Route path="/post/:id" component={PostDetail} />
+            <Route path="/post/:id" component={PostPage} />
             <Route path="/register" component={() => <Register userLogged={this.userLogged} />} />
             <Route path="/contact" component={Contact} />
             <Route component={NotFound} />
