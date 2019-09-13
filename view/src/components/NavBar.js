@@ -63,7 +63,7 @@ export class NavBar extends Component {
             <li className="nav-item" onClick={this.collapse}>
               {this.props.isLogged ? (
                 <Link className="nav-link" to="/profile">
-                  Profile
+                  {JSON.parse(localStorage.user).name}
                 </Link>
               ) : null}
             </li>
