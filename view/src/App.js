@@ -14,6 +14,11 @@ class App extends Component {
     isLogged: false
   }
 
+  componentDidMount() {
+    let loggedUser = localStorage.user;
+    if(loggedUser) this.setState({ isLogged: true });
+  }
+
   userLogged = (value) => {
     this.setState({ isLogged: !this.state.isLogged })
   }
