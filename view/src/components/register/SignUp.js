@@ -49,7 +49,7 @@ export class SignUp extends Component {
             ref={elem => (this.name = elem)}
             type="text"
             name="name"
-            className="animated bounceInLeft  input-text"
+            className="animated bounceInRight  input-text"
             placeholder="User Name"
           />
         </div>
@@ -58,7 +58,7 @@ export class SignUp extends Component {
             ref={elem => (this.email = elem)}
             type="email"
             name="email"
-            className="animated bounceInLeft input-text"
+            className="animated bounceInRight input-text"
             placeholder="Email Address"
           />
         </div>
@@ -67,7 +67,7 @@ export class SignUp extends Component {
             ref={elem => (this.phone = elem)}
             type="phone"
             name="number"
-            className="animated bounceInLeft  input-text"
+            className="animated bounceInRight input-text"
             placeholder="phone Number"
           />
         </div>
@@ -76,12 +76,12 @@ export class SignUp extends Component {
             ref={elem => (this.password = elem)}
             type="password"
             name="Password"
-            className="animated bounceInLeft  input-text"
+            className="animated bounceInRight input-text"
             placeholder="Password"
           />
         </div>
         <div className="form-group form-box image">
-          <div className="image-file animated bounceInLeft">
+          <div className="image-file animated bounceInRight">
             <input
               ref={elem => (this.image = elem)}
               accept="image/png, image/jpeg"

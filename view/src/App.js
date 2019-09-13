@@ -9,6 +9,15 @@ import MyProfile from "./components/profile/MyProfile";
 import PostPage from "./components/posts/PostPage";
 import NavBar from "./components/NavBar";
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure({
+  autoClose: 2500,
+  draggable: true,
+  pauseOnHover: true
+});
+
 class App extends Component {
   state = {
     isLogged: false
