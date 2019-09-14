@@ -14,7 +14,7 @@ export class Comment extends Component {
   }
 
     render() {
-        const {_id, text, user} = this.props.comment;
+        const { text, user} = this.props.comment;
         return (
             <div className="text-muted border w-50 m-3 rounded bg-light p-3">
                     <span className="float-right text-small">{this.creationTime()}</span>

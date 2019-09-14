@@ -1,31 +1,37 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-// there is a bug toggle logout/ register and hide profile if user loggedin or not
-
 export class NavBar extends Component {
   scrollWin = () => window.scrollTo(0, 0);
 
   logOut = () => {
-    this.props.userLogged(false)
+    this.props.userLogged(false);
     localStorage.clear();
   };
+
+  collapse() {
+    const toggle = document
+      .querySelector(".navbar-collapse")
+      .classList.contains("show");
+    if (toggle) document.querySelector(".navbar-toggler").click();
+  }
 
   render() {
     setTimeout(() => {
       document.getElementById("loder").style.display = "none";
-    }, 2000);
+    }, 1500);
 
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div className="loder" id="loder" onClick={this.hidenloder}>
-          <img src="https://i.ibb.co/MRG7k3n/coders.png" />
+          <img src="https://i.ibb.co/MRG7k3n/coders.png" alt="loader" />
         </div>
         <Link className="navbar-brand nav_logo" to="/">
           <img
             src="https://i.ibb.co/MRG7k3n/coders.png"
             className="hvr-grow"
             width="150"
+            alt="loader"
           />
         </Link>
         <div className="scrool_up">
@@ -33,6 +39,7 @@ export class NavBar extends Component {
             onClick={this.scrollWin}
             src="http://www.kreeti.com/images/scroll_top.png"
             width="60"
+            alt="loader"
           />
         </div>
         <button
@@ -48,19 +55,19 @@ export class NavBar extends Component {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
+            <li className="nav-item" onClick={this.collapse}>
               <Link to="/" className="nav-link active">
                 Home <span className="sr-only">(current)</span>
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" onClick={this.collapse}>
               {this.props.isLogged ? (
                 <Link className="nav-link" to="/profile">
-                  Profile
+                  {JSON.parse(localStorage.user).name}
                 </Link>
               ) : null}
             </li>
-            <li className="nav-item">
+            <li className="nav-item" onClick={this.collapse}>
               {this.props.isLogged ? (
                 <Link className="nav-link" to="/" onClick={this.logOut}>
                   Logout
