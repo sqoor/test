@@ -95,8 +95,11 @@ export class MyProfile extends Component {
                 </div>
               </div>
             </div>
-            <MyPostsList myPosts={myPosts} deletePost={deletePost} />
           </div>
+        </div>
+        <div className="container">
+
+            <MyPostsList myPosts={myPosts} deletePost={deletePost} />
         </div>
       </div>
     );
