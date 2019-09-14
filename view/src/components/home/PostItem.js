@@ -25,7 +25,7 @@ export class Post extends Component {
               <img src={user.image} alt={user.name} />
             </div>
             <div className="user_name">{user.name}</div>
-            <span className="userinfo_date float-right">{this.creationTime()}</span>
+            <span className="userinfo_date float-right">{this.creationTime()} ago</span>
           </div>
           <div className="post">
             <h4>{title}</h4>
@@ -35,7 +35,7 @@ export class Post extends Component {
             <textarea disabled={true} value={code}></textarea>
           </div>
           <div className="pos_anser">
-            <div className="anser_count"> 30 Comment </div>
+            {/* <div className="anser_count"> 30 Comment </div> */}
             <Link
               className="text-light"
               to={{ pathname: `/post/${_id}`, state: this.props.post }}

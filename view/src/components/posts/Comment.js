@@ -16,14 +16,30 @@ export class Comment extends Component {
     render() {
         const { text, user} = this.props.comment;
         return (
-            <div className="text-muted border w-50 m-3 rounded bg-light p-3">
-                    <span className="float-right text-small">{this.creationTime()}</span>
-                   <img src={user.image} alt={user.name} />
-                   <h4>{user.name}</h4>
-                   <p>{text}</p> 
+            <div>
+
+            
+          
+            <div className="post_item">
+          <div className="User_info">
+            <div className="user_img">
+            <img src={user.image} alt={user.name} />
+            </div>
+            <div className="user_name">{user.name}</div>
+            <span className="float-right text-small ml-auto">{this.creationTime()}</span>
+          </div>
+          <div className="post">
+            <textarea
+              disabled="true"
+              value={text}
+            ></textarea>
+          </div>
+        </div>
+
             </div>
         )
     }
 }
+
 
 export default Comment
