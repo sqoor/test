@@ -59,7 +59,15 @@ export class MyProfile extends Component {
 
     return (
       <div>
-        <div className="min_header"></div>
+        <div className="min_header">
+        <div className="container">
+            <p className="">
+             <h2>Welcome  {myInfo.name}</h2>
+            </p>
+            {/* <button className="btn btn-info">Create ANew Account</button> */}
+          </div>
+
+        </div>
         <div className="container">
           <div className="row">
             <div className="col-md-10 offset-md-1">
@@ -95,8 +103,11 @@ export class MyProfile extends Component {
                 </div>
               </div>
             </div>
-            <MyPostsList myPosts={myPosts} deletePost={deletePost} />
           </div>
+        </div>
+        <div className="container">
+
+            <MyPostsList myPosts={myPosts} deletePost={deletePost} />
         </div>
       </div>
     );

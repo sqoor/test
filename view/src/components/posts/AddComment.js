@@ -1,27 +1,30 @@
 import React, { Component } from "react";
 
 export class AddComment extends Component {
-    addComment = (e) => {
-        e.preventDefault();
-        
-        const comment = this.commentInput.value
-    
-        if(!comment) return alert('empty input field');
+  addComment = e => {
+    e.preventDefault();
 
-        this.props.addComment(comment)
-        this.commentInput.value = "";
-    }
+    const comment = this.commentInput.value;
+
+    if (!comment) return alert("empty input field");
+
+    this.props.addComment(comment);
+    this.commentInput.value = "";
+  };
 
   render() {
     return (
-        <form onSubmit={this.addComment} className="form-inline">
-          <input
-            className="form-control"
-            ref={elem => (this.commentInput = elem)}
-            type="text"
-          />
-          <button className="btn btn-outline-dark">Comment</button>
-        </form>
+      <div  class="add_Post_form" style={{padding:"0"}}>
+      <hr/>
+          <form onSubmit={this.addComment} className="form-inline">
+           
+            <textarea
+               ref={elem => (this.commentInput = elem)}
+            ></textarea>
+            <button class="btn btn-info">answer</button>
+          </form>
+       
+      </div>
     );
   }
 }

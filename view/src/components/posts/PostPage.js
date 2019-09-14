@@ -72,7 +72,7 @@ export class PostPage extends Component {
   render() {
     const { code, text, title, user } = this.props.location.state;
     return (
-      <div>
+      <div className="container">
         <div className="post_item">
           <div className="User_info">
             <div className="user_img">

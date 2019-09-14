@@ -5,14 +5,13 @@ import Axios from "axios";
 
 export class Home extends Component {
   state = {
-    posts: [],
+    posts: []
   };
 
   userLoggedIn() {
     let loggedUser = localStorage.user;
-    
-    if(loggedUser)
-      loggedUser = JSON.parse(loggedUser);
+
+    if (loggedUser) loggedUser = JSON.parse(loggedUser);
 
     return loggedUser ? true : false;
   }
@@ -39,7 +38,7 @@ export class Home extends Component {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
         <div className="min_header">
           <div className="container">
-            <p>
+            <p className="hidden-sm">
               We want to connect the people who have knowledge to <br /> the
               people who need it, to bring together people with different
               <br /> perspectives so they can understand each other better, and
@@ -57,9 +56,9 @@ export class Home extends Component {
                 return <Post post={post} key={post._id} />;
               })}
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 no_in_small">
               <div className="side_bar ">
-                <form>
+                {/* <form>
                   <div className="input-group mb-3 animated fadeInRight">
                     <input
                       type="text"
@@ -72,7 +71,7 @@ export class Home extends Component {
                       </span>
                     </div>
                   </div>
-                </form>
+                </form> */}
                 <div className="side_about_me animated zoomInRight">
                   <h3>About Us</h3>
                   <p>
@@ -82,11 +81,21 @@ export class Home extends Component {
                   </p>
                 </div>
                 <div className="sochial_icons">
-                  <i className="fab fa-facebook-f animated  bounce delay-1s"></i>
-                  <i className="fab fa-twitter animated  bounce delay-2s"></i>
-                  <i className="fab fa-linkedin-in animated  bounce delay-3s"></i>
-                  <i className="fab fa-github animated  bounce delay-4s"></i>
-                  <i className="fab fa-google animated  bounce delay-5s"></i>
+                  <a href="https://www.orange.jo/" target="_blank">
+                    <i className="fab fa-facebook-f animated  bounce delay-1s"></i>
+                  </a>
+                  <a href="https://www.orange.jo/" target="_blank">
+                    <i className="fab fa-twitter animated  bounce delay-2s"></i>
+                  </a>
+                  <a href="https://www.orange.jo/" target="_blank">
+                    <i className="fab fa-linkedin-in animated  bounce delay-3s"></i>
+                  </a>
+                  <a href="https://www.orange.jo/" target="_blank">
+                    <i className="fab fa-github animated  bounce delay-4s"></i>
+                  </a>
+                  <a href="https://www.orange.jo/" target="_blank">
+                    <i className="fab fa-google animated  bounce delay-5s"></i>
+                  </a>
                 </div>
                 <div className="video_side">
                   <h4>Who Are We </h4>
