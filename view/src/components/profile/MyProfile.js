@@ -61,9 +61,7 @@ export class MyProfile extends Component {
       <div>
         <div className="min_header">
         <div className="container">
-            <p className="">
              <h2>Welcome  {myInfo.name}</h2>
-            </p>
             {/* <button className="btn btn-info">Create ANew Account</button> */}
           </div>
 

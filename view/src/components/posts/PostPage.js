@@ -80,7 +80,7 @@ export class PostPage extends Component {
             </div>
             <div className="user_name">{user.name}</div>
             <span className="userinfo_date float-right">
-              {this.postCreationTime()}
+              {this.postCreationTime()} ago
             </span>
           </div>
           <div className="post">
@@ -98,6 +98,7 @@ export class PostPage extends Component {
             )}
           </div>
         </div>
+        <h2 className="text-muted text-center m-5 p-2 rounded">Comments List</h2>
         <div className="comments">
           {this.state.comments.map(comment => (
             <Comment key={comment._id} comment={comment} />

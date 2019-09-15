@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import mongoose from "mongoose";
 import moment from "moment";
 
@@ -13,33 +13,31 @@ export class Comment extends Component {
     return duration.humanize();
   }
 
-    render() {
-        const { text, user} = this.props.comment;
-        return (
-            <div>
-
-            
-          
-            <div className="post_item">
+  render() {
+    const { text, user } = this.props.comment;
+    return (
+      <div>
+        <div className="post_item w-75">
           <div className="User_info">
             <div className="user_img">
-            <img src={user.image} alt={user.name} />
+              <img src={user.image} alt={user.name} />
             </div>
             <div className="user_name">{user.name}</div>
-            <span className="float-right text-small ml-auto">{this.creationTime()}</span>
+            <span className="float-right text-small ml-auto">
+              {this.creationTime()} ago
+            </span>
           </div>
           <div className="post">
             <textarea
-              disabled="true"
+              className="bg-light text-dark"
+              disabled={true}
               value={text}
             ></textarea>
           </div>
         </div>
-
-            </div>
-        )
-    }
+      </div>
+    );
+  }
 }
 
-
-export default Comment
+export default Comment;
