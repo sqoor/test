@@ -114,10 +114,10 @@ you can help us to develop our site by pull your suggestions
 <!-- CONTACT -->
 ## Contact
 
-Abdullah Sqoor - [sqoor-github](https://github.com/sqoor)
-Ahmad Alaarg   - [Ahmad-github](https://github.com/Alaarg)
-Asma Alfauri   - [Asma-github](https://github.com/AsmaAlfauri)
-Moath Gharib   - [Moath-github](https://github.com/MoathG)
+Abdullah Sqoor - [sqoor-github](https://github.com/sqoor) <br>
+Ahmad Alaarg   - [Ahmad-github](https://github.com/Alaarg) <br>
+Asma Alfauri   - [Asma-github](https://github.com/AsmaAlfauri) <br>
+Moath Gharib   - [Moath-github](https://github.com/MoathG) <br>
 
 
 Project Link: [Code TalkerZ](https://github.com/oca-project-4/test)
