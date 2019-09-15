@@ -17,7 +17,7 @@ export class Comment extends Component {
     const { text, user } = this.props.comment;
     return (
       <div>
-        <div className="post_item">
+        <div className="post_item w-75">
           <div className="User_info">
             <div className="user_img">
               <img src={user.image} alt={user.name} />
@@ -28,7 +28,11 @@ export class Comment extends Component {
             </span>
           </div>
           <div className="post">
-            <textarea disabled={true} value={text}></textarea>
+            <textarea
+              className="bg-light text-dark"
+              disabled={true}
+              value={text}
+            ></textarea>
           </div>
         </div>
       </div>
