@@ -80,7 +80,7 @@ export class PostPage extends Component {
             </div>
             <div className="user_name">{user.name}</div>
             <span className="userinfo_date float-right">
-              {this.postCreationTime()}
+              {this.postCreationTime()} ago
             </span>
           </div>
           <div className="post">

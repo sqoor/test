@@ -24,7 +24,7 @@ export class Comment extends Component {
             </div>
             <div className="user_name">{user.name}</div>
             <span className="float-right text-small ml-auto">
-              {this.creationTime() +  'ago'}
+              {this.creationTime()} ago
             </span>
           </div>
           <div className="post">
