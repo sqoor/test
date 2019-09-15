@@ -2,7 +2,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/oca-project-4/test">
+  <a href="https://github.com/oca-project-4/code-talkerz">
     <img src="https://i.ibb.co/MRG7k3n/coders.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -11,7 +11,7 @@
   <p align="center">
      blog for coders for asking question about code problems 
     <br />
-    <a href="https://github.com/oca-project-4/test"><strong> To clone the project </strong></a>
+    <a href="https://github.com/oca-project-4/code-talkerz"><strong> To clone the project </strong></a>
   </p>
 </p>
 
@@ -70,7 +70,7 @@ To get a local copy up and running follow these simple example steps.
  
 2. Clone the repo
 ```sh
-git clone https://github.com/oca-project-4/test
+git clone https://github.com/oca-project-4/code-talkerz
 ```
 3. Install NPM packages
 ```sh
@@ -120,4 +120,4 @@ Asma Alfauri   - [Asma-github](https://github.com/AsmaAlfauri) <br>
 Moath Gharib   - [Moath-github](https://github.com/MoathG) <br>
 
 
-Project Link: [Code TalkerZ](https://github.com/oca-project-4/test)
+Project Link: [Code TalkerZ](https://github.com/oca-project-4/code-talkerz)
