@@ -20,41 +20,42 @@ export class MyPostItem extends Component {
 
     return (
       <div className="col-md-10 offset-md-1">
-        <div class="post_item wow slideInLeft">
-          <div class="User_info">
-            <div class="user_img">
+        <div className="post_item wow slideInLeft">
+          <div className="User_info">
+            <div className="user_img">
               <img src={user.image} alt="ahmad" />
             </div>
-            <div class="user_name">{user.name}</div>
-            <span class="userinfo_date float-right">{this.creationTime()}</span>
+            <div className="user_name">{user.name}</div>
+            <span className="userinfo_date float-right">
+              {this.creationTime() + " ago"}
+            </span>
           </div>
-          <div class="post">
           <div className="post">
-                <h4>{title}</h4>
-                <h6>{text}</h6>
-                <br />
-                <pre>{code}</pre>
-              </div>
+            <div className="post">
+              <h4>{title}</h4>
+              <h6>{text}</h6>
+              <br />
+              <pre>{code}</pre>
+            </div>
           </div>
           <div className="pos_anser_single">
-                {/* <p>the Answers</p> */}
-                <button
-                type="button"
-                className="btn btn-danger float-left"
-                onClick={deletePost.bind(this, _id)}
-              >
-                Delete Post
-              </button>
-                <Link
-                  className="text-light"
-                  to={{ pathname: `/post/${_id}`, state: this.props.post }}
-                >
-                  <button className="btn btn-info">Check The Answers</button>
-                </Link>
-              </div>
+            {/* <p>the Answers</p> */}
+            <button
+              type="button"
+              className="btn btn-danger float-left"
+              onClick={deletePost.bind(this, _id)}
+            >
+              Delete Post
+            </button>
+            <Link
+              className="text-light"
+              to={{ pathname: `/post/${_id}`, state: this.props.post }}
+            >
+              <button className="btn btn-info">Check The Answers</button>
+            </Link>
+          </div>
         </div>
-
-         </div>
+      </div>
     );
   }
 }
