@@ -108,7 +108,7 @@ hr {
 .post_item {
   background: #fff;
   padding: 10px 15px;
-  margin: 25px 0;
+  margin: 15px 0;
   transition: 0.3s ease-in;
   border-radius: 10px;
   color: #000;
@@ -672,7 +672,9 @@ input[type="radio"] {
 .login-10 .form-section p a {
   color: #d6d6d6;
 }
-
+.bg-info {
+  background-color: #f79227 !important;
+}
 /** MEDIA **/
 @media (max-width: 1200px) {
   .login-10 .info h1 {
