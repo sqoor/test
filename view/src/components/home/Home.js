@@ -37,13 +37,15 @@ export class Home extends Component {
       <div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
         <div className="min_header">
-          <div className="container">
-            <p className="hidden-sm">
-              We want to connect the people who have knowledge to <br /> the
-              people who need it, to bring together people with different
-              <br /> perspectives so they can understand each other better, and
-              to empower
-              <br /> everyone to share their knowledge.
+          <div className="container ">
+            <p className="hidden-sm animated fadeInLeft delay-4s">
+              Code TalkerZ Started Because Of The Many Issues Appeare When The
+              Coder Coding.
+              <br />
+              That's Why We Built This Website To Help The Coders Each Other.{" "}
+              <br />
+              Along The Way, The Coding Will Be Easier. We Want To Be <br />
+              The Best And First Questions Answers Website.
             </p>
             {/* <button className="btn btn-info">Create ANew Account</button> */}
           </div>
@@ -72,32 +74,32 @@ export class Home extends Component {
                     </div>
                   </div>
                 </form> */}
-                <div className="side_about_me animated zoomInRight">
+                <div className=" side_about_me animated zoomInRight delay-2s">
                   <h3>About Us</h3>
                   <p>
                     Hello We Are The Code Talkerz We Help You to solve codes
-                    broblems to learn from yours false and the cool word that we
+                    problems to learn from yours false and the cool word that we
                     say if you dont get in false you will not learn any thing
                   </p>
                 </div>
                 <div className="sochial_icons">
-                  <a href="https://www.orange.jo/" target="_blank">
+                  <a className=" hvr-grow"  href="https://www.orange.jo/" target="_blank">
                     <i className="fab fa-facebook-f animated  bounce delay-1s"></i>
                   </a>
-                  <a href="https://www.orange.jo/" target="_blank">
+                  <a  className=" hvr-grow" href="https://www.orange.jo/" target="_blank">
                     <i className="fab fa-twitter animated  bounce delay-2s"></i>
                   </a>
-                  <a href="https://www.orange.jo/" target="_blank">
+                  <a className=" hvr-grow"  href="https://www.orange.jo/" target="_blank">
                     <i className="fab fa-linkedin-in animated  bounce delay-3s"></i>
                   </a>
-                  <a href="https://www.orange.jo/" target="_blank">
+                  <a className=" hvr-grow"  href="https://www.orange.jo/" target="_blank">
                     <i className="fab fa-github animated  bounce delay-4s"></i>
                   </a>
-                  <a href="https://www.orange.jo/" target="_blank">
+                  <a className=" hvr-grow"  href="https://www.orange.jo/" target="_blank">
                     <i className="fab fa-google animated  bounce delay-5s"></i>
                   </a>
                 </div>
-                <div className="video_side">
+                <div className="video_side ">
                   <h4>Who Are We </h4>
 
                   <iframe

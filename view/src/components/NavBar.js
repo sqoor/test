@@ -24,11 +24,11 @@ export class NavBar extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div className="loder" id="loder" onClick={this.hidenloder}>
-          <img src="https://i.ibb.co/MRG7k3n/coders.png" alt="loader" />
+          <img src="https://i.ibb.co/t4v0fL2/code-Talkers.png" alt="loader" />
         </div>
-        <Link className="navbar-brand nav_logo" to="/">
+        <Link className="navbar-brand nav_logo animated fadeInDown delay-3s" to="/">
           <img
-            src="https://i.ibb.co/MRG7k3n/coders.png"
+            src="https://i.ibb.co/t4v0fL2/code-Talkers.png"
             className="hvr-grow"
             width="150"
             alt="loader"
@@ -55,25 +55,30 @@ export class NavBar extends Component {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item" onClick={this.collapse}>
-              <Link to="/" className="nav-link active">
+            <li className="nav-item animated fadeInDown delay-1s" onClick={this.collapse}>
+              <Link to="/" className="nav-link active  ">
                 Home <span className="sr-only">(current)</span>
               </Link>
             </li>
-            <li className="nav-item" onClick={this.collapse}>
+            <li className="nav-item animated fadeInDown delay-2s" onClick={this.collapse}>
               {this.props.isLogged ? (
                 <Link className="nav-link" to="/profile">
                   {JSON.parse(localStorage.user).name}
                 </Link>
               ) : null}
             </li>
-            <li className="nav-item" onClick={this.collapse}>
+            <li className="nav-item animated fadeInDown delay-3s" onClick={this.collapse}>
+              <Link to="/contact" className="nav-link ">
+                About Us
+              </Link>
+            </li>
+            <li className="nav-item animated fadeInDown delay-4s" onClick={this.collapse}>
               {this.props.isLogged ? (
                 <Link className="nav-link" to="/" onClick={this.logOut}>
                   Logout
                 </Link>
               ) : (
-                <Link className="nav-link" to="/register">
+                <Link className="nav-link animated fadeInDown delay-4s" to="/register">
                   Register
                 </Link>
               )}
