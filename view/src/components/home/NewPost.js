@@ -50,7 +50,7 @@ export class NewPost extends Component {
             className="form-control"
             placeholder="Enter Your Code Here"
           ></textarea>
-          <button className="btn btn-info">Publish Your Question</button>
+          <button className="btn btn-info">Publish</button>
         </form>
       </div>
     );

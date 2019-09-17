@@ -4,9 +4,17 @@
 html {
   scroll-behavior: smooth;
 }
+.min_color{
+  color: #f79226
+}
+.card_costume {
+  background-color: rgba(255, 255, 255, 0.26) !important;
+  padding: 5px !important;
+}
 body {
   background: rgb(33, 40, 50) !important;
   color: rgb(255, 255, 255) !important;
+  text-transform: capitalize
 }
 hr {
   height: 2px;
@@ -89,7 +97,7 @@ hr {
   width: 300px;
   height: 150px;
   background-color: rgba(0, 0, 0, 0.7);
-  background: url(https://i.ibb.co/MRG7k3n/coders.png);
+  background: url(https://i.ibb.co/t4v0fL2/code-Talkers.png);
   background-size: contain;
   right: 100px;
   top: 150px;
@@ -279,10 +287,10 @@ hr {
   display: inline-block;
   transition: 0.5s;
 }
-.User_prof_img:hover {
+/* .User_prof_img:hover {
   transform: rotate(-360deg);
   transition: 0.5s;
-}
+} */
 
 .User_prof_img img {
   width: 100%;
@@ -754,6 +762,16 @@ pre {
   background: #212529 !important;
   color: #fff !important;
   padding: 10px;
+}
+
+a.nav-link {
+  border-bottom: 2px solid transparent;
+  transition: .3s
+}
+
+a.nav-link:hover {
+  transition: .3s;
+  border-bottom: 2px solid #f79226;
 }
 /* .....................media/ */
 @media (max-width: 575.98px) {
