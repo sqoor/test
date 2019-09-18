@@ -39,7 +39,7 @@ export class Register extends Component {
                     Login
                   </button>
                   <button className="link-btn" onClick={this.signupBtn}>
-                    signup
+                    Sign Up
                   </button>
                 </div>
                 <div className="login-inner-form" id="login">

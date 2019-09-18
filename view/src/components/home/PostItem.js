@@ -40,7 +40,7 @@ export class Post extends Component {
               className="text-light"
               to={{ pathname: `/post/${_id}`, state: this.props.post }}
             >
-              <button className="btn btn-info">Commints</button>
+              <button className="btn btn-info">Comments</button>
             </Link>
           </div>
         </div>
