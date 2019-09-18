@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ToastContainer, toast, Zoom } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 export class AddComment extends Component {
   addComment = e => {

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { toast } from 'react-toastify';
 
 export class NewPost extends Component {
   submit = e => {
@@ -19,8 +20,13 @@ export class NewPost extends Component {
       }
     };
 
-    if(text && title)
+    if(text && title) {
       this.props.addPost(newUser);
+      toast.success("Added a post.");
+    }
+    else {
+      return toast.error("Write Post title and content.");
+    }
       
     this.emptyInputFields();
   };
