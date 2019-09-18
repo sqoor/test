@@ -19,7 +19,8 @@ export class Home extends Component {
   componentDidMount() {
     Axios.get("/posts")
       .then(res => {
-        this.setState({ posts: res.data });
+        this.setState({ posts: res.data.reverse() });
+
       })
       .catch(err => console.log(err));
   }

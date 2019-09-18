@@ -28,7 +28,7 @@ export class MyProfile extends Component {
     axios
       .get(`/posts/user/${loggedUser._id}`)
       .then(response => {
-        this.setState({ myPosts: response.data });
+        this.setState({ myPosts: response.data.reverse() });
       })
       .catch(error => {
         console.log("Error", error);
