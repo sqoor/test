@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export class MyPostItem extends Component {
   creationTime() {
-    const { _id } = this.props;
+    const { _id } = this.props.post;
     const isoDate = mongoose.Types.ObjectId(_id).getTimestamp();
     const mom = new moment(isoDate);
     const now = new moment();
@@ -51,7 +51,7 @@ export class MyPostItem extends Component {
               className="text-light"
               to={{ pathname: `/post/${_id}`, state: this.props.post }}
             >
-              <button className="btn btn-info">Commints</button>
+              <button className="btn btn-info">Comments</button>
             </Link>
           </div>
         </div>
