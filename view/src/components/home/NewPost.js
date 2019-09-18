@@ -19,7 +19,9 @@ export class NewPost extends Component {
       }
     };
 
-    this.props.addPost(newUser);
+    if(text && title)
+      this.props.addPost(newUser);
+      
     this.emptyInputFields();
   };
 
