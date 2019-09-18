@@ -156,7 +156,7 @@ export class SignUp extends Component {
               type="phone"
               name="phone"
               className="animated bounceInRight input-text"
-              placeholder="phone Number"
+              placeholder="Phone Number"
             />
             {this.validator.message(
               "phone",
@@ -216,7 +216,7 @@ export class SignUp extends Component {
           <div className="checkbox clearfix"></div>
           <div className="form-group mb-0">
             <button type="submit" className="btn-md btn-theme btn-block">
-              sign Up
+              Sign Up
             </button>
           </div>
         </form>
