@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { ToastContainer, toast, Zoom } from 'react-toastify';
 
 export class AddComment extends Component {
   addComment = e => {
@@ -6,7 +7,7 @@ export class AddComment extends Component {
 
     const comment = this.commentInput.value;
 
-    if (!comment) return alert("empty input field");
+    if (!comment) return toast.error("Write a comment");
 
     this.props.addComment(comment);
     this.commentInput.value = "";
