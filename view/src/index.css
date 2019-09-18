@@ -14,7 +14,7 @@ html {
 body {
   background: rgb(33, 40, 50) !important;
   color: rgb(255, 255, 255) !important;
-  text-transform: capitalize
+  /* text-transform: capitalize */
 }
 hr {
   height: 2px;
@@ -192,7 +192,7 @@ hr {
   float: right;
 }
 .pos_anser_single {
-  background: #ddd;
+  /* background: #ddd; */
   padding: 10px;
   display: inline-block;
   width: 100%;
