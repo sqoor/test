@@ -79,7 +79,7 @@ export class NavBar extends Component {
                   Logout
                 </Link>
               ) : (
-                <Link className="nav-link animated fadeInDown delay-4s" to="/register">
+                <Link className="nav-link" to="/register">
                   Register
                 </Link>
               )}
