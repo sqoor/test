@@ -117,9 +117,7 @@ https://avatars2.githubusercontent.com/u/36342474?s=460&v=4
                   <div className="col-3">
                     <div className="card card_costume">
                       <img
-                        src="https://avatars0.githubusercontent.com/u/41105012?s=460&v=4(31 kB)
-                        https://avatars0.githubusercontent.com/u/41105012?s=460&v=4
-"
+                        src="https://scontent.famm6-1.fna.fbcdn.net/v/t1.0-9/31958006_769376826605044_1517162442436640768_n.jpg?_nc_cat=101&_nc_oc=AQmTEWBpJNjdh1T3ZH0ilyQCNkWVTqZinUwMprEvZ_s2IrPkpy5XdW1-io-y4RzCzR8&_nc_ht=scontent.famm6-1.fna&oh=394aebfc5a71c56d942b86b103539dc0&oe=5DEFE6ED"
                         alt="sqoor"
                         style={{
                           width: "100%"
