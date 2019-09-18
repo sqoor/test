@@ -17,7 +17,7 @@ export class Comment extends Component {
     const { text, user } = this.props.comment;
     return (
       <div>
-        <div className="post_item w-75">
+        <div className="post_item w-75 mx-auto">
           <div className="User_info">
             <div className="user_img">
               <img src={user.image} alt={user.name} />

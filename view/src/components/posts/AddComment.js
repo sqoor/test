@@ -14,14 +14,15 @@ export class AddComment extends Component {
 
   render() {
     return (
-      <div  className="add_Post_form" style={{padding:"0"}}>
+      <div  className="add_Post_form" style={{padding:"0", width: '90%', margin: 'auto'}}>
       <hr/>
           <form onSubmit={this.addComment} className="form-inline">
            
             <textarea
+              placeholder="Add a comment..."
                ref={elem => (this.commentInput = elem)}
             ></textarea>
-            <button className="btn btn-info">answer</button>
+            <button className="btn btn-info">Comment</button>
           </form>
        
       </div>

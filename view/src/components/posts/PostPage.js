@@ -88,18 +88,23 @@ export class PostPage extends Component {
             <p className="text">{text}</p>
             <pre className="code bg-dark p-3 text-light">{code}</pre>
           </div>
-          <div className="add-comment">
-            {this.state.loggedUser ? (
-              <AddComment addComment={this.addComment} />
-            ) : (
-              <Link to="/register" className="btn btn-outline-dark">
-                Register to add a comment
-              </Link>
-            )}
-          </div>
         </div>
-        <h2 className="text-muted text-center m-5 p-2 rounded">Comments List</h2>
+
+        <div className="add-comment mt-0  text-center">
+          {this.state.loggedUser ? (
+            <AddComment addComment={this.addComment} />
+          ) : (
+            <Link to="/register" className="btn btn-light">
+              Register to add a comment
+            </Link>
+          )}
+        </div>
+
+       
         <div className="comments">
+        <h2 className="text-muted text-center m-5 p-2 rounded">
+          Comments List
+        </h2>
           {this.state.comments.map(comment => (
             <Comment key={comment._id} comment={comment} />
           ))}
