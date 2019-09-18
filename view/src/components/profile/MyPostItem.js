@@ -35,7 +35,7 @@ export class MyPostItem extends Component {
               <h4>{title}</h4>
               <h6>{text}</h6>
               <br />
-              <pre>{code}</pre>
+              { code ? <pre>{code}</pre> : null }
             </div>
           </div>
           <div className="pos_anser_single">

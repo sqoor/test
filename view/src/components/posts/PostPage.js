@@ -96,7 +96,7 @@ export class PostPage extends Component {
           <div className="post">
             <h4>{title}</h4>
             <p className="text">{text}</p>
-            <pre className="code bg-dark p-3 text-light">{code}</pre>
+            { code ? <pre className="code bg-dark p-3 text-light">{code}</pre> : null }
           </div>
         </div>
 

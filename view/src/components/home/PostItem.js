@@ -32,7 +32,7 @@ export class Post extends Component {
             <p>
               <strong>{text}</strong>
             </p>
-            <textarea disabled={true} value={code}></textarea>
+            {code ? <textarea disabled={true} value={code} ></textarea> : null}
           </div>
           <div className="pos_anser">
             {/* <div className="anser_count"> 30 Comment </div> */}
