@@ -68,7 +68,7 @@ export class NavBar extends Component {
               ) : null}
             </li>
             <li className="nav-item animated fadeInDown delay-3s" onClick={this.collapse}>
-              <Link to="/contact" className="nav-link ">
+              <Link to="/us" className="nav-link ">
                 About Us
               </Link>
             </li>
