@@ -12,7 +12,11 @@ export class PostPage extends Component {
     this.state = {
       comments: [],
       loggedUser: {},
-      postId: ""
+      user: {},
+      postId: "",
+      code: "",
+      text: "",
+      title: "",
     };
 
     this.addComment = this.addComment.bind(this);
@@ -32,17 +36,23 @@ export class PostPage extends Component {
   }
 
   componentDidMount() {
-    const postId = this.props.location.state._id;
+    if(!this.props.location.state) this.props.history.push('/')
+
+    const { _id, code, text, title, user } = this.props.location.state;
 
     let loggedUser = localStorage.user;
     if (loggedUser) loggedUser = JSON.parse(loggedUser);
 
     this.setState({
-      postId,
-      loggedUser
+      postId: _id,
+      loggedUser,
+      code,
+      text,
+      title,
+      user
     });
 
-    Axios.get(`/comments/${postId}`)
+    Axios.get(`/comments/${_id}`)
       .then(res => {
         this.setState({ comments: res.data });
       })
@@ -70,7 +80,7 @@ export class PostPage extends Component {
   }
 
   render() {
-    const { code, text, title, user } = this.props.location.state;
+    const { code, text, title, user } = this.state;
     return (
       <div className="container">
         <div className="post_item">

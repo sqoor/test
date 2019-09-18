@@ -18,7 +18,8 @@ export class NavBar extends Component {
 
   render() {
     setTimeout(() => {
-      document.getElementById("loder").style.display = "none";
+      if(document.getElementById("loder"))
+        document.getElementById("loder").style.display = "none";
     }, 1500);
 
     return (
